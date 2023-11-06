@@ -6,7 +6,7 @@
 /*   By: tmalless <tmalless@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 13:10:34 by tmalless          #+#    #+#             */
-/*   Updated: 2023/10/30 16:52:47 by tmalless         ###   ########.fr       */
+/*   Updated: 2023/11/04 13:01:39 by tmalless         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,15 +33,21 @@ typedef struct s_player
 {
 	double	x;
 	double	y;
-	double	deltax;
-	double	deltay;
-	int		gofwd;
-	int		gobwd;
-	int		goright;
-	int		goleft;
+	double	dx;
+	double	dy;
+	int		up;
+	int		down;
+	int		left;
+	int		right;
+	int		gof;
+	int		gob;
+	int		gor;
+	int		gol;
 	int		lookl;
 	int		lookr;
-	float angle;
+	float a;
+	float al;
+	float ar;
 
 }				t_player;
 
@@ -53,14 +59,33 @@ typedef struct s_map
 	int		width;
 }				t_map;
 
+typedef struct s_ray
+{
+	int		mx;
+	int		my;
+	int		xo;
+	int		yo;
+	float	rx;
+	float	ry;
+	float	hx;
+	float	hy;
+	float	vx;
+	float	vy;
+	int		r_n;
+	int		r;
+}				t_ray;
+
 typedef struct s_data
 {
 	void		*mlx;
 	void		*mlx_win;
 	t_map		map;
-	t_player	player;
+	t_player	p;
+	t_ray		r;
+
 }				t_data;
 
 char	**dup_map(char *av);
+void	check_mv(t_data *g);
 
 #endif

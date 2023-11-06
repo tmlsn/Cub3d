@@ -6,13 +6,13 @@
 #    By: tmalless <tmalless@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/16 17:21:31 by tmalless          #+#    #+#              #
-#    Updated: 2023/10/28 20:21:08 by tmalless         ###   ########.fr        #
+#    Updated: 2023/10/31 19:36:41 by tmalless         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = Cub3d
 
-SRCS = main.c map_create.c
+SRCS = main.c map_create.c handle_mooves.c
 
 OBJECT = $(SRCS:.c=.o)
 
