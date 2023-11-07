@@ -6,7 +6,7 @@
 /*   By: tmalless <tmalless@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 10:02:48 by tmalless          #+#    #+#             */
-/*   Updated: 2023/11/07 11:21:36 by tmalless         ###   ########.fr       */
+/*   Updated: 2023/11/07 19:10:36 by tmalless         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -143,6 +143,8 @@ void	ray_caster(t_data *g)
 
 	r = 0;
 	a = g->p.a - 30 * DR;
+	if (a < 0)
+		a += 2 * PI;
 	while (r < 60)
 	{
 		ray_casterh(g, a),

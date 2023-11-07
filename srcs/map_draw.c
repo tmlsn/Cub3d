@@ -6,7 +6,7 @@
 /*   By: tmalless <tmalless@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 10:05:31 by tmalless          #+#    #+#             */
-/*   Updated: 2023/11/07 12:29:56 by tmalless         ###   ########.fr       */
+/*   Updated: 2023/11/07 17:57:21 by tmalless         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,21 +82,64 @@ void	print_small_map(t_data *g)
 	}
 }
 
-/* void	print_semi_small_map(t_data *g)
+void	print_thin_map(t_data *g, int m)
 {
-	if (g->map.height < 9)
-		print_low_map(g);
-	else if (g->map.width < 9)
-		print_thin_map(g);
-} */
+	int	i;
+	int	j;
+	int	k;
 
-/* void	print_semi_small_map(t_data *g)
+	i = get_i(g);
+	j = 0;
+	k = i + 9;
+	while (g->map.map[i] && i < k)
+	{
+		while (g->map.map[i][j])
+		{
+			if (g->map.map[i][j] == '1')
+				fill_wall(g, m, j);
+			else if (g->map.map[i][j] == '0')
+				fill_floor(g, m, j);
+			j++;
+		}
+		j = 0;
+		i++;
+		m++;
+	}
+}
+
+void	print_low_map(t_data *g, int n)
+{
+	int	i;
+	int	j;
+	int	l;
+
+	i = 0;
+	j = get_j(g);
+	l = j + 9;
+	while (g->map.map[i])
+	{
+		while (g->map.map[i][j] && j < l)
+		{
+			if (g->map.map[i][j] == '1')
+				fill_wall(g, i, n);
+			else if (g->map.map[i][j] == '0')
+				fill_floor(g, i, n);
+			j++;
+			n++;
+		}
+		j = l - 9;
+		n = 0;
+		i++;
+	}
+}
+
+void	print_semi_small_map(t_data *g)
 {
 	if (g->map.height < 9)
-		print_low_map(g);
+		print_low_map(g, 0);
 	else if (g->map.width < 9)
-		print_thin_map(g);
-} */
+		print_thin_map(g, 0);
+}
 
 int	get_i(t_data *g)
 {
@@ -155,11 +198,10 @@ void	print_big_map(t_data *g, int k, int l, int m, int n)
 
 void	draw_map(t_data *g)
 {
-
 	if (g->map.height < 9 && g->map.width < 9)
 		print_small_map(g);
-/* 	else if (g->map.height < 9 && g->map.width < 9)
-		print_semi_small_map(g); */
+	else if (g->map.height < 9 && g->map.width < 9)
+		print_semi_small_map(g);
 	else
 		print_big_map(g, 0, 0, 0, 0);
 }

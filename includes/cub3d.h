@@ -6,7 +6,7 @@
 /*   By: tmalless <tmalless@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 13:10:34 by tmalless          #+#    #+#             */
-/*   Updated: 2023/11/07 11:15:59 by tmalless         ###   ########.fr       */
+/*   Updated: 2023/11/07 18:51:25 by tmalless         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,6 @@ typedef struct s_player
 	double	y;
 	double	dx;
 	double	dy;
-	int		up;
-	int		down;
-	int		left;
-	int		right;
 	int		gof;
 	int		gob;
 	int		gor;
@@ -89,10 +85,12 @@ typedef struct s_data
 void	init_map(t_data *game, char *av);
 char	**dup_map(char *av);
 void	draw_map(t_data *g);
+void	print_small_map(t_data *g);
 
 // PLAYER
 void	init_p(t_data *g);
 void	draw_p(t_data *g);
+void	draw_p_on_map(t_data *g);
 
 // HOOKS
 int		key_hook(int keycode, t_data *g);
