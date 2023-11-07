@@ -6,13 +6,14 @@
 #    By: tmalless <tmalless@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/16 17:21:31 by tmalless          #+#    #+#              #
-#    Updated: 2023/10/31 19:36:41 by tmalless         ###   ########.fr        #
+#    Updated: 2023/11/07 10:47:58 by tmalless         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = Cub3d
 
-SRCS = main.c map_create.c handle_mooves.c
+SRCS = main.c srcs/map_init.c srcs/handle_mooves.c srcs/ray_casting.c srcs/player_init.c srcs/player_draw.c \
+		srcs/map_draw.c srcs/key_bindings.c srcs/handle_wall.c srcs/handle_look.c
 
 OBJECT = $(SRCS:.c=.o)
 
