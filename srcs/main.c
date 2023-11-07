@@ -6,13 +6,11 @@
 /*   By: tmalless <tmalless@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 13:09:26 by tmalless          #+#    #+#             */
-/*   Updated: 2023/11/07 19:12:59 by tmalless         ###   ########.fr       */
+/*   Updated: 2023/11/07 19:20:50 by tmalless         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./includes/cub3d.h"
-#include <mlx.h>
-#include "./mlx_linux/mlx.h"
+#include "cub3d.h"
 
 int	looping(t_data *g)
 {
