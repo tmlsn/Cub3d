@@ -6,17 +6,13 @@
 /*   By: fduzant <fduzant@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 13:10:34 by tmalless          #+#    #+#             */
-/*   Updated: 2023/11/07 17:41:22 by fduzant          ###   ########.fr       */
+/*   Updated: 2023/11/07 19:38:16 by fduzant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB3D_H
 
 # define CUB3D_H
-
-# include "struct.h"
-# include "librairies.h"
-# include "raycast.h"
 
 // MINILIBX
 # include "mlx.h"
@@ -25,6 +21,12 @@
 # include "../lib/get_next_line/get_next_line.h"
 # include "../lib/libft/libft.h"
 # include "../lib/ft_printf/ft_printf.h"
+
+# include "struct.h"
+# include "librairies.h"
+# include "raycast.h"
+# include "parsing.h"
+# include "utils.h"
 
 # define PI 3.14
 # define SIDE 0.785398

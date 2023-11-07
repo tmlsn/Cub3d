@@ -6,7 +6,7 @@
 #    By: fduzant <fduzant@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/16 17:21:31 by tmalless          #+#    #+#              #
-#    Updated: 2023/11/07 17:38:10 by fduzant          ###   ########.fr        #
+#    Updated: 2023/11/07 19:37:08 by fduzant          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,9 +21,13 @@ MOVE = movement/handle_mooves.c movement/handle_wall.c movement/handle_look.c
 
 DRAW = draw/player_draw.c draw/map_draw.c 
 
+PARSING = parsing/check_file.c
+
+UTILS = utils/ft_error.c utils/ft_close.c utils/ft_split_endl.c utils/ft_free.c
+
 UNDEFINED = map_init.c player_init.c key_bindings.c 
 
-SRCS = main.c $(RAYCASTING) $(UNDEFINED) $(MOVE) $(DRAW)
+SRCS = main.c $(RAYCASTING) $(UNDEFINED) $(MOVE) $(DRAW) $(PARSING) $(UTILS)
 SRCS := $(addprefix $(SRCS_PATH), $(SRCS))
 
 OBJECT = $(SRCS:.c=.o)

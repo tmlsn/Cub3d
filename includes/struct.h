@@ -6,7 +6,7 @@
 /*   By: fduzant <fduzant@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 17:17:30 by fduzant           #+#    #+#             */
-/*   Updated: 2023/11/07 17:18:50 by fduzant          ###   ########.fr       */
+/*   Updated: 2023/11/07 18:59:22 by fduzant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,5 +67,13 @@ typedef struct s_data
 	t_ray		r;
 
 }				t_data;
+
+typedef struct s_parsing
+{
+	int		fd;
+	char	*file_content;
+	char	**file_content_split;
+	char	**texture_path;
+}			t_parsing;
 
 #endif
