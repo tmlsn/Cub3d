@@ -6,7 +6,7 @@
 /*   By: tmalless <tmalless@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 13:10:34 by tmalless          #+#    #+#             */
-/*   Updated: 2023/11/07 10:47:10 by tmalless         ###   ########.fr       */
+/*   Updated: 2023/11/07 11:15:59 by tmalless         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,7 @@ typedef struct s_data
 }				t_data;
 
 // MAP
+void	init_map(t_data *game, char *av);
 char	**dup_map(char *av);
 void	draw_map(t_data *g);
 

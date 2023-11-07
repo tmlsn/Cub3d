@@ -6,7 +6,7 @@
 /*   By: tmalless <tmalless@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 13:09:26 by tmalless          #+#    #+#             */
-/*   Updated: 2023/11/07 10:52:59 by tmalless         ###   ########.fr       */
+/*   Updated: 2023/11/07 11:31:31 by tmalless         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,14 +43,14 @@ int	main(int ac, char **av)
 	g = ft_calloc(sizeof(t_data), 1);
 	if (ac != 2)
 		return (0);
+	init_map(g, av[1]);
 	g->mlx = mlx_init();
 	if (!g->mlx)
 		return (printf("zebi\n"));
-	g->mlx_win = mlx_new_window(g->mlx, 32 * 8, 32 * 8, "zeubi");
+	g->mlx_win = mlx_new_window(g->mlx, 1920, 1080, "zeubi");
+	// g->mlx_win = mlx_new_window(g->mlx, 32 * g->map.width, 32 * g->map.height, "zeubi");
 	/* g->map.height = 32 * 8;
 	g->map.width = 32 * 8; */
-	g->map.file = av[1];
-	g->map.map = dup_map(g->map.file);
 	init_p(g);
 
 	

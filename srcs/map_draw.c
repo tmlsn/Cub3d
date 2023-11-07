@@ -6,7 +6,7 @@
 /*   By: tmalless <tmalless@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 10:05:31 by tmalless          #+#    #+#             */
-/*   Updated: 2023/11/07 10:43:05 by tmalless         ###   ########.fr       */
+/*   Updated: 2023/11/07 12:29:56 by tmalless         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ void	fill_floor(t_data *g, int i, int j)
 	}
 }
 
-void	draw_map(t_data *g)
+void	print_small_map(t_data *g)
 {
 	int	i;
 	int	j;
@@ -73,11 +73,93 @@ void	draw_map(t_data *g)
 		{
 			if (g->map.map[i][j] == '1')
 				fill_wall(g, i, j);
-			else
+			else if (g->map.map[i][j] == '0')
 				fill_floor(g, i, j);
 			j++;
 		}
 		j = 0;
 		i++;
 	}
+}
+
+/* void	print_semi_small_map(t_data *g)
+{
+	if (g->map.height < 9)
+		print_low_map(g);
+	else if (g->map.width < 9)
+		print_thin_map(g);
+} */
+
+/* void	print_semi_small_map(t_data *g)
+{
+	if (g->map.height < 9)
+		print_low_map(g);
+	else if (g->map.width < 9)
+		print_thin_map(g);
+} */
+
+int	get_i(t_data *g)
+{
+	int	i;
+	
+	if (g->p.y / 32 < 4)
+		i = 0;
+	else if ((int)(g->p.y / 32 + 5) > g->map.height)
+		i = g->map.height - 9;
+	else
+		i = g->p.y / 32 - 4;
+	printf("i : %d\n", i);
+	return (i);
+}
+
+int	get_j(t_data *g)
+{
+	int	j;
+	
+	if (g->p.x / 32 < 4)
+		j = 0;
+	else if ((int)(g->p.x / 32 + 5) > g->map.width)
+		j = g->map.width - 9;
+	else
+		j = g->p.x / 32 - 4;
+	printf("j : %d\n", j);
+	return (j);
+}
+
+void	print_big_map(t_data *g, int k, int l, int m, int n)
+{
+	int	i;
+	int	j;
+
+	i = get_i(g);
+	j = get_j(g);
+	k = i + 9;
+	l = j + 9;
+	while (g->map.map[i] && i < k)
+	{
+		while (g->map.map[i][j] && j < l)
+		{
+			if (g->map.map[i][j] == '1')
+				fill_wall(g, m, n);
+			else if (g->map.map[i][j] == '0')
+				fill_floor(g, m, n);
+			j++;
+			n++;
+		}
+		j = l - 9;
+		n = 0;
+		i++;
+		m++;
+	}
+}
+
+void	draw_map(t_data *g)
+{
+
+	if (g->map.height < 9 && g->map.width < 9)
+		print_small_map(g);
+/* 	else if (g->map.height < 9 && g->map.width < 9)
+		print_semi_small_map(g); */
+	else
+		print_big_map(g, 0, 0, 0, 0);
 }
