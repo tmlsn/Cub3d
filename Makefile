@@ -3,21 +3,33 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: tmalless <tmalless@student.42.fr>          +#+  +:+       +#+         #
+#    By: fduzant <fduzant@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/16 17:21:31 by tmalless          #+#    #+#              #
-#    Updated: 2023/11/07 10:47:58 by tmalless         ###   ########.fr        #
+#    Updated: 2023/11/07 17:38:10 by fduzant          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = Cub3d
+NAME = cub3D
 
-SRCS = main.c srcs/map_init.c srcs/handle_mooves.c srcs/ray_casting.c srcs/player_init.c srcs/player_draw.c \
-		srcs/map_draw.c srcs/key_bindings.c srcs/handle_wall.c srcs/handle_look.c
+SRCS_PATH	= ./srcs/
+INCS_PATH	= ./includes/
+
+RAYCASTING = raycasting/ray_casting.c
+
+MOVE = movement/handle_mooves.c movement/handle_wall.c movement/handle_look.c
+
+DRAW = draw/player_draw.c draw/map_draw.c 
+
+UNDEFINED = map_init.c player_init.c key_bindings.c 
+
+SRCS = main.c $(RAYCASTING) $(UNDEFINED) $(MOVE) $(DRAW)
+SRCS := $(addprefix $(SRCS_PATH), $(SRCS))
 
 OBJECT = $(SRCS:.c=.o)
 
 CFLAGS = # -Wall -Wextra -Werror
+CFLAGS += -I $(INCS_PATH)
 
 LIB = lib/get_next_line/gnl.a lib/libft/libft.a lib/ft_printf/libftprintf.a mlx_linux/libmlx_Linux.a #mlx_linux/libmlx.a
 
@@ -42,7 +54,7 @@ clean :
 	rm -f $(OBJECT) $(OBJECTBONUS)
 
 fclean : clean
-	rm -f Cub3d
+	rm -f $(NAME)
 	cd lib/libft ; make fclean
 	cd lib/get_next_line ; make fclean
 	cd lib/ft_printf ; make fclean
