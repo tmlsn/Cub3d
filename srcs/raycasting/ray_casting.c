@@ -6,7 +6,7 @@
 /*   By: tmalless <tmalless@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 10:02:48 by tmalless          #+#    #+#             */
-/*   Updated: 2023/11/14 15:16:44 by tmalless         ###   ########.fr       */
+/*   Updated: 2023/11/14 17:41:27 by tmalless         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,19 +123,27 @@ float	dist(float px, float py, float rx, float ry, float ra)
 
 void	pick_v_or_h(t_data *g)
 {
-	if (dist(g->p.x, g->p.y, g->r.hx, g->r.hy, g->p.a) > dist(g->p.x, g->p.y, g->r.vx, g->r.vy, g->p.a))
+	g->r.dish = dist(g->p.x, g->p.y, g->r.hx, g->r.hy, g->p.a);
+	g->r.disv = dist(g->p.x, g->p.y, g->r.vx, g->r.vy, g->p.a);
+	if (g->r.dish > g->r.disv)
 	{
 		g->r.rx = g->r.vx;
 		g->r.ry = g->r.vy;
-		g->r.dist = dist(g->p.x, g->p.y, g->r.vx, g->r.vy, g->p.a);
-		g->r.color = 200;
+		g->r.dist = g->r.disv;
+		if (g->p.x > g->r.rx)
+			g->r.color = 015020255;
+		else
+			g->r.color = 000150255;
 	}
 	else
 	{
 		g->r.rx = g->r.hx;
 		g->r.ry = g->r.hy;
-		g->r.dist = dist(g->p.x, g->p.y, g->r.hx, g->r.hy, g->p.a);
-		g->r.color = 255;
+		g->r.dist = g->r.dish;
+		if (g->p.y > g->r.ry)
+			g->r.color = 100255000;
+		else
+			g->r.color = 800200300;
 	}
 	mlx_pixel_put(g->mlx, g->mlx_win, g->r.rx, g->r.ry, 255);
 }

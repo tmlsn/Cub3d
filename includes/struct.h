@@ -6,7 +6,7 @@
 /*   By: tmalless <tmalless@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 17:17:30 by fduzant           #+#    #+#             */
-/*   Updated: 2023/11/14 15:16:11 by tmalless         ###   ########.fr       */
+/*   Updated: 2023/11/14 17:27:14 by tmalless         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,8 @@ typedef struct s_ray
 	float	hy;
 	float	vx;
 	float	vy;
+	float	disv;
+	float	dish;
 	float	dist;
 	int		color;
 	int		r_n;
