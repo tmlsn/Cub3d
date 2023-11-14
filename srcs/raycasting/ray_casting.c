@@ -6,7 +6,7 @@
 /*   By: tmalless <tmalless@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 10:02:48 by tmalless          #+#    #+#             */
-/*   Updated: 2023/11/07 19:10:36 by tmalless         ###   ########.fr       */
+/*   Updated: 2023/11/14 15:16:44 by tmalless         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,11 +127,15 @@ void	pick_v_or_h(t_data *g)
 	{
 		g->r.rx = g->r.vx;
 		g->r.ry = g->r.vy;
+		g->r.dist = dist(g->p.x, g->p.y, g->r.vx, g->r.vy, g->p.a);
+		g->r.color = 200;
 	}
 	else
 	{
 		g->r.rx = g->r.hx;
 		g->r.ry = g->r.hy;
+		g->r.dist = dist(g->p.x, g->p.y, g->r.hx, g->r.hy, g->p.a);
+		g->r.color = 255;
 	}
 	mlx_pixel_put(g->mlx, g->mlx_win, g->r.rx, g->r.ry, 255);
 }
@@ -142,17 +146,18 @@ void	ray_caster(t_data *g)
 	float 	a;
 
 	r = 0;
-	a = g->p.a - 30 * DR;
+	a = g->p.a - (((DR / 18) * 1080) / 2);
 	if (a < 0)
 		a += 2 * PI;
-	while (r < 60)
+	while (r < 1080)
 	{
 		ray_casterh(g, a),
 		ray_casterv(g, a),
 		pick_v_or_h(g);
-		a += DR;
+		a += (DR / 18);
 		if (a > 2 * PI)
 			a -= 2 * PI;
+		draw_game(g, a, g->r.dist, r);
 		r++;
 	}
 }

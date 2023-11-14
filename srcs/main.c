@@ -6,7 +6,7 @@
 /*   By: tmalless <tmalless@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 13:09:26 by tmalless          #+#    #+#             */
-/*   Updated: 2023/11/07 19:20:50 by tmalless         ###   ########.fr       */
+/*   Updated: 2023/11/14 15:13:22 by tmalless         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,13 @@
 
 int	looping(t_data *g)
 {
-	draw_map(g);
 	//print_small_map(g);
+	draw_map(g);
 	check_mv(g);
-	draw_p(g);
-	//draw_p_on_map(g);
+	//draw_p(g);
+	draw_p_on_map(g);
 	ray_caster(g);
+	//draw_map(g);
 }
 
 /* void	print_map(char **map)
@@ -47,7 +48,7 @@ int	main(int ac, char **av)
 	g->mlx = mlx_init();
 	if (!g->mlx)
 		return (printf("zebi\n"));
-	g->mlx_win = mlx_new_window(g->mlx, 1920, 1080, "zeubi");
+	g->mlx_win = mlx_new_window(g->mlx, 1080, 720, "zeubi");
 	// g->mlx_win = mlx_new_window(g->mlx, 32 * g->map.width, 32 * g->map.height, "zeubi");
 	/* g->map.height = 32 * 8;
 	g->map.width = 32 * 8; */

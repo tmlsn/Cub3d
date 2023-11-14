@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: fduzant <fduzant@student.42.fr>            +#+  +:+       +#+         #
+#    By: tmalless <tmalless@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/16 17:21:31 by tmalless          #+#    #+#              #
-#    Updated: 2023/11/07 17:38:10 by fduzant          ###   ########.fr        #
+#    Updated: 2023/11/14 14:53:31 by tmalless         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,9 @@ DRAW = draw/player_draw.c draw/map_draw.c
 
 UNDEFINED = map_init.c player_init.c key_bindings.c 
 
-SRCS = main.c $(RAYCASTING) $(UNDEFINED) $(MOVE) $(DRAW)
+3D = 3D/3D_render.c
+
+SRCS = main.c $(RAYCASTING) $(UNDEFINED) $(MOVE) $(DRAW) $(3D)
 SRCS := $(addprefix $(SRCS_PATH), $(SRCS))
 
 OBJECT = $(SRCS:.c=.o)
