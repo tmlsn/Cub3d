@@ -6,7 +6,7 @@
 /*   By: tmalless <tmalless@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 17:17:30 by fduzant           #+#    #+#             */
-/*   Updated: 2023/11/14 17:27:14 by tmalless         ###   ########.fr       */
+/*   Updated: 2023/11/14 19:19:35 by tmalless         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ typedef struct s_player
 	int		gol;
 	int		lookl;
 	int		lookr;
+	int		speed;
 	float	a;
 	float	al;
 	float	ar;
