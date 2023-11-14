@@ -6,11 +6,23 @@
 /*   By: tmalless <tmalless@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 10:25:42 by tmalless          #+#    #+#             */
-/*   Updated: 2023/11/07 19:11:16 by tmalless         ###   ########.fr       */
+/*   Updated: 2023/11/14 21:05:22 by tmalless         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
+
+void	draw_sense(t_data *g)
+{
+	int	i;
+
+	i = 0;
+	while (i < 10)
+	{
+		mlx_pixel_put(g->mlx, g->mlx_win, g->p.x + cos(g->p.a) * i, g->p.y + sin(g->p.a) * i, 100255000);
+		i++;
+	}
+}
 
 void	draw_p(t_data *g)
 {
@@ -25,12 +37,13 @@ void	draw_p(t_data *g)
 	{
 		while (j < 3)
 		{
-			mlx_pixel_put(g->mlx, g->mlx_win, g->p.x + j, g->p.y + i, 255);
+			mlx_pixel_put(g->mlx, g->mlx_win, g->p.x + j, g->p.y + i, 100255000);
 			j++;
 		}
 		j = -2;
 		i++;
 	}
+	draw_sense(g);
 	/*  check_mv(g);
 	//mlx_pixel_put(g->mlx, g->mlx_win, g->p.x + (g->p.dx * 10), g->p.y + (g->p.dy * 10), 255);
 	ray_caster(g);  */

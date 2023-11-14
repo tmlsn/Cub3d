@@ -6,7 +6,7 @@
 /*   By: tmalless <tmalless@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 10:25:35 by tmalless          #+#    #+#             */
-/*   Updated: 2023/11/07 19:01:32 by tmalless         ###   ########.fr       */
+/*   Updated: 2023/11/14 20:42:47 by tmalless         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,15 @@ void init_p(t_data *g)
 	g->p.a = PI;
 	g->p.al = g->p.a - 2 * SIDE;
 	g->p.ar = g->p.a + 2 * SIDE;
-	g->p.x = 40;
-	g->p.y = 42;
-	g->p.dx = cos(g->p.a) * 2;
-	g->p.dy = sin(g->p.a) * 2;
+	g->p.x = 140;
+	g->p.y = 142;
+	/* g->p.dx = cos(g->p.a) * 2;
+	g->p.dy = sin(g->p.a) * 2; */
 	g->p.gob = 0;
 	g->p.gof = 0;
 	g->p.gor = 0;
 	g->p.gol = 0;
 	g->p.lookl = 0;
 	g->p.lookr = 0;
+	g->p.speed = 2;
 }
