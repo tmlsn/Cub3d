@@ -6,7 +6,7 @@
 /*   By: tmalless <tmalless@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 10:02:48 by tmalless          #+#    #+#             */
-/*   Updated: 2023/11/14 20:58:31 by tmalless         ###   ########.fr       */
+/*   Updated: 2023/11/15 17:51:02 by tmalless         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,7 +121,7 @@ float	dist(float px, float py, float rx, float ry, float ra)
 	return (sqrt((ry - py) * (ry - py) + (rx - px) * (rx - px)));
 }
 
-void	pick_v_or_h(t_data *g)
+void	pick_v_or_h(t_data *g, int r)
 {
 	g->r.dish = dist(g->p.x, g->p.y, g->r.hx, g->r.hy, g->p.a);
 	g->r.disv = dist(g->p.x, g->p.y, g->r.vx, g->r.vy, g->p.a);
@@ -168,11 +168,16 @@ void	ray_caster(t_data *g)
 	{
 		ray_casterh(g, a),
 		ray_casterv(g, a),
-		pick_v_or_h(g);
+		pick_v_or_h(g, r);
 		a += (DR / 18);
 		if (a > 2 * PI)
 			a -= 2 * PI;
 		draw_game(g, a, g->r.dist, r);
+		win_check(g, r, a);
+		if (g->r.isw /* && g->r.wind < g->r.dist */)
+		{
+				draw_window(g, a, g->r.wind, r);
+		}
 		r++;
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: tmalless <tmalless@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 17:17:30 by fduzant           #+#    #+#             */
-/*   Updated: 2023/11/14 19:19:35 by tmalless         ###   ########.fr       */
+/*   Updated: 2023/11/15 17:04:29 by tmalless         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,16 @@ typedef struct s_ray
 	float	hy;
 	float	vx;
 	float	vy;
+	float	wvx;
+	float	wvy;
+	float	whx;
+	float	why;
+	float	wx;
+	float	wy;
+	float	winv;
+	float	winh;
+	float	wind;
+	int		isw;
 	float	disv;
 	float	dish;
 	float	dist;

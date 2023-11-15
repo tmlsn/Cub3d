@@ -6,7 +6,7 @@
 /*   By: tmalless <tmalless@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 10:08:09 by tmalless          #+#    #+#             */
-/*   Updated: 2023/11/14 19:19:38 by tmalless         ###   ########.fr       */
+/*   Updated: 2023/11/15 09:52:35 by tmalless         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ int	key_release(int keycode, t_data *g)
 
 int	key_hook(int keycode, t_data *g)
 {
+	printf("%d\n", keycode);
 	if (keycode == 115 || keycode == 65364)
 	{
 		g->p.gob = 1;
@@ -75,5 +76,7 @@ int	key_hook(int keycode, t_data *g)
 	{
 		g->p.speed = 6;
 	}
+	if (keycode == 65307)
+		return (exit_game(0));
 	return (0);
 }

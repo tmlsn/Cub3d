@@ -6,7 +6,7 @@
 /*   By: tmalless <tmalless@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 13:10:34 by tmalless          #+#    #+#             */
-/*   Updated: 2023/11/07 19:20:45 by tmalless         ###   ########.fr       */
+/*   Updated: 2023/11/15 09:51:59 by tmalless         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,5 +52,8 @@ void	check_mv(t_data *g);
 void	look_r(t_data *g);
 void	look_l(t_data *g);
 int		wall_check(float a, t_data *g);
+
+// EXIT
+int		exit_game(int err);
 
 #endif

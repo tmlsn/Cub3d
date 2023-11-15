@@ -6,7 +6,7 @@
 #    By: tmalless <tmalless@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/16 17:21:31 by tmalless          #+#    #+#              #
-#    Updated: 2023/11/14 14:53:31 by tmalless         ###   ########.fr        #
+#    Updated: 2023/11/15 17:08:22 by tmalless         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,13 +15,13 @@ NAME = cub3D
 SRCS_PATH	= ./srcs/
 INCS_PATH	= ./includes/
 
-RAYCASTING = raycasting/ray_casting.c
+RAYCASTING = raycasting/ray_casting.c raycasting/window_check.c
 
 MOVE = movement/handle_mooves.c movement/handle_wall.c movement/handle_look.c
 
 DRAW = draw/player_draw.c draw/map_draw.c 
 
-UNDEFINED = map_init.c player_init.c key_bindings.c 
+UNDEFINED = map_init.c player_init.c key_bindings.c exit.c
 
 3D = 3D/3D_render.c
 
