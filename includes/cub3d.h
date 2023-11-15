@@ -6,7 +6,7 @@
 /*   By: fduzant <fduzant@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 13:10:34 by tmalless          #+#    #+#             */
-/*   Updated: 2023/11/07 19:38:16 by fduzant          ###   ########.fr       */
+/*   Updated: 2023/11/13 14:15:41 by fduzant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,13 @@
 # include "raycast.h"
 # include "parsing.h"
 # include "utils.h"
+
+//ERROR MESSAGE
+# define ERROR_ARG "Error, Invalids arguments\n"
+# define ERROR_MALLOC "Error, malloc fail\n"
+# define ERROR_WINDOW "Error, window size is invalid\n"
+# define ERROR_EMPTY "Error, file is empty\n"
+# define ERROR_XPM_COLOR "Error, XPM color is invalid\n" 
 
 # define PI 3.14
 # define SIDE 0.785398
