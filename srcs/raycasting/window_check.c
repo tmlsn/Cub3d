@@ -6,11 +6,30 @@
 /*   By: tmalless <tmalless@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 16:39:01 by tmalless          #+#    #+#             */
-/*   Updated: 2023/11/15 17:46:57 by tmalless         ###   ########.fr       */
+/*   Updated: 2023/11/16 09:58:19 by tmalless         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
+
+void	print_map(char **map)
+{
+	int i = 0;
+
+	while (map[i])
+	{
+		printf("%s", map[i]);
+		i++;
+	}
+	printf("\n");
+}
+
+void	break_window(t_data *g)
+{
+	if (g->map.map[(int)(g->p.y + g->p.dy * 8) / 32][(int)(g->p.x + g->p.dx * 8) / 32] == 'V')
+		g->map.map[(int)(g->p.y + g->p.dy * 8) / 32][(int)(g->p.x + g->p.dx * 8) / 32] = '0';
+	/* print_map(g->map.map); */
+}
 
 void	winv(t_data *g, float ra)
 {
@@ -21,7 +40,6 @@ void	winv(t_data *g, float ra)
 	int mx, my;
 
 	aTan = -(tan(ra));
-	//printf("%f\n", tan(ra));
 		if (ra > P2 && ra < P3)
 		{
 			g->r.wvx = (((int)g->p.x>>5)<<5) - 0.001;
@@ -62,7 +80,7 @@ void	winv(t_data *g, float ra)
 				dof++;
 			}
 		}
-	//mlx_pixel_put(g->mlx, g->mlx_win, g->r.vx, g->r.vy, 255);
+	//mlx_pixel_put(g->mlx, g->mlx_win, g->r.vx, g->r.vy, 0064213265);
 }
 
 void	winh(t_data *g, float ra)
@@ -115,13 +133,15 @@ void	winh(t_data *g, float ra)
 				dof++;
 			}
 		}
-	//mlx_pixel_put(g->mlx, g->mlx_win, g->r.hx, g->r.hy, 255);
+	//mlx_pixel_put(g->mlx, g->mlx_win, g->r.hx, g->r.hy, 0064213265);
 }
 
 void	win_v_or_h(t_data *g, int r)
 {
 	g->r.winh = dist(g->p.x, g->p.y, g->r.whx, g->r.why, g->p.a);
-	g->r.winv = dist(g->p.x, g->p.y, g->r.wvx, g->r.wvy, g->p.a);
+	g->r.winv = dist(g->p.x, g->p.y, g->r.wvx, g->r.wvy, g->p.a) + 1;
+	//printf("%f\n%f\n%d\n%d\n\n", g->r.winh, g->r.winv, g->r.whx, g->r.why);
+	// printf("%f %f %f %f %f\n", g->p.x, g->p.y, g->r.whx, g->r.why, g->p.a);
 /* 	if (g->r.winh == g->r.winv || (g->r.winh - g->r.winv < 0.1 && g->r.winh - g->r.winv > -0.1))
 	{
 		g->r.wx = g->r.whx;
@@ -129,11 +149,11 @@ void	win_v_or_h(t_data *g, int r)
 		g->r.wind = g->r.winh;
 		//g->r.color = g->r.color;
 	} */
-	if (g->r.winh > g->r.winv)
+	if (g->r.winh < g->r.winv)
 	{
-		g->r.wx = g->r.wvx;
-		g->r.wy = g->r.wvy;
-		g->r.wind = g->r.winv;
+		g->r.wx = g->r.whx;
+		g->r.wy = g->r.why;
+		g->r.wind = g->r.winh;
 		/* if (g->p.x > g->r.rx)
 			g->r.color = 015020255;
 		else
@@ -141,20 +161,22 @@ void	win_v_or_h(t_data *g, int r)
 	}
 	else
 	{
-		g->r.wx = g->r.whx;
-		g->r.wy = g->r.why;
-		g->r.wind = g->r.winh;
+		
+		g->r.wx = g->r.wvx;
+		g->r.wy = g->r.wvy;
+		g->r.wind = g->r.winv;
 		/* if (g->p.y > g->r.ry)
 			g->r.color = 100255000;
 		else
 			g->r.color = 800200300; */
 	}
+	g->r.winh = 0;
+	g->r.winv = 0; 
 	mlx_pixel_put(g->mlx, g->mlx_win, g->r.wx, g->r.wy, 0064213265);
 }
 
 void	win_check(t_data *g, int r, float ra)
 {
-	g->r.isw = 0;
 	winh(g, ra);
 	winv(g, ra);
 	win_v_or_h(g, r);

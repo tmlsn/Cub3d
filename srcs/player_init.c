@@ -6,7 +6,7 @@
 /*   By: tmalless <tmalless@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 10:25:35 by tmalless          #+#    #+#             */
-/*   Updated: 2023/11/14 20:42:47 by tmalless         ###   ########.fr       */
+/*   Updated: 2023/11/16 09:19:44 by tmalless         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,4 +28,5 @@ void init_p(t_data *g)
 	g->p.lookl = 0;
 	g->p.lookr = 0;
 	g->p.speed = 2;
+	g->p.winbrk = 0;
 }

@@ -6,7 +6,7 @@
 /*   By: tmalless <tmalless@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 10:05:31 by tmalless          #+#    #+#             */
-/*   Updated: 2023/11/15 17:53:38 by tmalless         ###   ########.fr       */
+/*   Updated: 2023/11/16 12:03:34 by tmalless         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,8 +75,10 @@ void	fill(t_data *g, int i, int j)
 		{
 			if (i % 32 == 0 || j % 32 == 0)
 				mlx_pixel_put(g->mlx, g->mlx_win, j, i, 0);
+			else if ((i % 4 == 0 && j % 4 == 0) || (i % 4 == 1 && j % 4 == 1))
+				mlx_pixel_put(g->mlx, g->mlx_win, j, i, 000150255);
 			else
-				mlx_pixel_put(g->mlx, g->mlx_win, j, i, 0300555120);
+				mlx_pixel_put(g->mlx, g->mlx_win, j, i, 90);
 			j++;
 		}
 		j -= 32;

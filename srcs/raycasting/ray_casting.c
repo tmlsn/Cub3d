@@ -6,7 +6,7 @@
 /*   By: tmalless <tmalless@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 10:02:48 by tmalless          #+#    #+#             */
-/*   Updated: 2023/11/15 17:51:02 by tmalless         ###   ########.fr       */
+/*   Updated: 2023/11/15 18:59:46 by tmalless         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -155,6 +155,14 @@ void	pick_v_or_h(t_data *g, int r)
 	mlx_pixel_put(g->mlx, g->mlx_win, g->r.rx, g->r.ry, 255);
 }
 
+void	ray_clean(t_data *g)
+{
+	g->r.whx = 0;
+	g->r.why = 0;
+	g->r.wvx = 0;
+	g->r.wvy = 0;
+}
+
 void	ray_caster(t_data *g)
 {
 	int	r;
@@ -166,18 +174,20 @@ void	ray_caster(t_data *g)
 		a += 2 * PI;
 	while (r < 1080)
 	{
+		g->r.isw = 0;
+		ray_clean(g);
 		ray_casterh(g, a),
 		ray_casterv(g, a),
 		pick_v_or_h(g, r);
-		a += (DR / 18);
-		if (a > 2 * PI)
-			a -= 2 * PI;
 		draw_game(g, a, g->r.dist, r);
 		win_check(g, r, a);
-		if (g->r.isw /* && g->r.wind < g->r.dist */)
+		if (g->r.isw && g->r.wind < g->r.dist)
 		{
 				draw_window(g, a, g->r.wind, r);
 		}
+		a += (DR / 18);
+		if (a > 2 * PI)
+			a -= 2 * PI;
 		r++;
 	}
 }
