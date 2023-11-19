@@ -6,7 +6,7 @@
 #    By: tmalless <tmalless@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/16 17:21:31 by tmalless          #+#    #+#              #
-#    Updated: 2023/11/19 19:39:53 by tmalless         ###   ########.fr        #
+#    Updated: 2023/11/19 19:59:45 by tmalless         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,20 +23,17 @@ DRAW = draw/player_draw.c draw/map_draw.c
 
 UNDEFINED = map_init.c player_init.c key_bindings.c exit.c
 
-3D = 3D/3D_render.c
-
-SRCS = main.c $(RAYCASTING) $(UNDEFINED) $(MOVE) $(DRAW) $(3D)
-PARSING = parsing/parsing.c parsing/check_file.c parsing/check_file_items.c parsing/check_map_closed.c \
-		  parsing/check_map_closed2.c parsing/check_texture_path.c parsing/create_and_init_map.c \
-		  parsing/get_texture_data.c parsing/get_texture_data_utils.c
-		  
-
 UTILS = utils/ft_error.c utils/ft_close.c utils/ft_split_endl.c utils/ft_free.c utils/ft_count_nb_line.c \
 		utils/ft_line_lowercase.c utils/ft_atoi_base.c utils/destroy_data.c
 
-UNDEFINED = map_init.c player_init.c key_bindings.c 
+3D = 3D/3D_render.c
 
-SRCS = main.c $(UTILS) $(PARSING)
+PARSING = parsing/parsing.c parsing/check_file.c parsing/check_file_items.c parsing/check_map_closed.c \
+		  parsing/check_map_closed2.c parsing/check_texture_path.c parsing/create_and_init_map.c \
+		  parsing/get_texture_data.c parsing/get_texture_data_utils.c
+
+SRCS = main.c $(RAYCASTING) $(UNDEFINED) $(MOVE) $(DRAW) $(3D) $(PARSING) $(UTILS) 
+
 SRCS := $(addprefix $(SRCS_PATH), $(SRCS))
 
 OBJECT = $(SRCS:.c=.o)

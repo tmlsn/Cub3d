@@ -6,7 +6,7 @@
 /*   By: tmalless <tmalless@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 17:17:30 by fduzant           #+#    #+#             */
-/*   Updated: 2023/11/19 19:35:49 by tmalless         ###   ########.fr       */
+/*   Updated: 2023/11/19 20:03:30 by tmalless         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,10 +62,14 @@ typedef struct s_xpm
 
 typedef struct s_map
 {
-	int		**map;
+	char	*file;
+	char	**map;
+	int		height;
+	int		width;
+/* 	int		**map;
 	int		x_max;
 	int		y_max;
-	int		**valide_case;
+	int		**valide_case; */
 }			t_map;
 
 typedef struct s_parsing
@@ -108,13 +112,18 @@ typedef struct s_ray
 
 typedef struct s_data
 {
+	void		*mlx;
+	void		*mlx_win;
+	t_map		map;
+	t_player	p;
+	t_ray		r;
 	t_texture	*north;
 	t_texture	*south;
 	t_texture	*west;
 	t_texture	*east;
 	int			floor_color;
 	int			ceiling_color;
-	char		**map;
+	char		**maap;
 	int			map_width;
 	int			map_height;
 	t_player	*player;

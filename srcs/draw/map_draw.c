@@ -6,11 +6,39 @@
 /*   By: tmalless <tmalless@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 10:05:31 by tmalless          #+#    #+#             */
-/*   Updated: 2023/11/15 17:53:38 by tmalless         ###   ########.fr       */
+/*   Updated: 2023/11/19 20:06:17 by tmalless         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
+
+int	get_i(t_data *g)
+{
+	int	i;
+	
+	if (g->p.y / 32 < 4)
+		i = 0;
+	else if ((int)(g->p.y / 32 + 5) > g->map.height)
+		i = g->map.height - 9;
+	else
+		i = g->p.y / 32 - 4;
+	printf("i : %d\n", i);
+	return (i);
+}
+
+int	get_j(t_data *g)
+{
+	int	j;
+	
+	if (g->p.x / 32 < 4)
+		j = 0;
+	else if ((int)(g->p.x / 32 + 5) > g->map.width)
+		j = g->map.width - 9;
+	else
+		j = g->p.x / 32 - 4;
+	printf("j : %d\n", j);
+	return (j);
+}
 
 void	fill_wall(t_data *g, int i, int j)
 {
@@ -165,34 +193,6 @@ void	print_semi_small_map(t_data *g)
 		print_low_map(g, 0);
 	else if (g->map.width < 9)
 		print_thin_map(g, 0);
-}
-
-int	get_i(t_data *g)
-{
-	int	i;
-	
-	if (g->p.y / 32 < 4)
-		i = 0;
-	else if ((int)(g->p.y / 32 + 5) > g->map.height)
-		i = g->map.height - 9;
-	else
-		i = g->p.y / 32 - 4;
-	printf("i : %d\n", i);
-	return (i);
-}
-
-int	get_j(t_data *g)
-{
-	int	j;
-	
-	if (g->p.x / 32 < 4)
-		j = 0;
-	else if ((int)(g->p.x / 32 + 5) > g->map.width)
-		j = g->map.width - 9;
-	else
-		j = g->p.x / 32 - 4;
-	printf("j : %d\n", j);
-	return (j);
 }
 
 void	print_big_map(t_data *g, int k, int l, int m, int n)
