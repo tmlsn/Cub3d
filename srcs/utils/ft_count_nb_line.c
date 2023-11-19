@@ -1,22 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   librairies.h                                       :+:      :+:    :+:   */
+/*   ft_count_nb_line.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fduzant <fduzant@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/07 17:19:24 by fduzant           #+#    #+#             */
-/*   Updated: 2023/11/15 13:39:58 by fduzant          ###   ########.fr       */
+/*   Created: 2023/11/14 14:48:58 by fduzant           #+#    #+#             */
+/*   Updated: 2023/11/14 14:49:37 by fduzant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBRAIRIES_H
-# define LIBRAIRIES_H
+#include "utils.h"
 
-# include <unistd.h>
-# include <stdio.h>
-# include <stdlib.h>
-# include <stdbool.h>
-# include <math.h>
+int	ft_count_nb_line(char **file_content)
+{
+	int	i;
 
-#endif
+	i = 0;
+	while (file_content[i])
+		i++;
+	return (i);
+}

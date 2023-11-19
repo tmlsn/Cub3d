@@ -6,17 +6,13 @@
 /*   By: tmalless <tmalless@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 13:10:34 by tmalless          #+#    #+#             */
-/*   Updated: 2023/11/15 09:51:59 by tmalless         ###   ########.fr       */
+/*   Updated: 2023/11/19 19:34:44 by tmalless         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB3D_H
 
 # define CUB3D_H
-
-# include "struct.h"
-# include "librairies.h"
-# include "raycast.h"
 
 // MINILIBX
 # include "mlx.h"
@@ -25,6 +21,19 @@
 # include "../lib/get_next_line/get_next_line.h"
 # include "../lib/libft/libft.h"
 # include "../lib/ft_printf/ft_printf.h"
+
+# include "struct.h"
+# include "librairies.h"
+# include "raycast.h"
+# include "parsing.h"
+# include "utils.h"
+
+//ERROR MESSAGE
+# define ERROR_ARG "Error, Invalids arguments\n"
+# define ERROR_MALLOC "Error, malloc fail\n"
+# define ERROR_WINDOW "Error, window size is invalid\n"
+# define ERROR_EMPTY "Error, file is empty\n"
+# define ERROR_XPM_COLOR "Error, XPM color is invalid\n" 
 
 # define PI 3.14
 # define SIDE 0.785398

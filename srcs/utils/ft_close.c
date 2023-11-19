@@ -1,22 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   librairies.h                                       :+:      :+:    :+:   */
+/*   ft_close.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fduzant <fduzant@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/07 17:19:24 by fduzant           #+#    #+#             */
-/*   Updated: 2023/11/15 13:39:58 by fduzant          ###   ########.fr       */
+/*   Created: 2023/11/07 18:55:57 by fduzant           #+#    #+#             */
+/*   Updated: 2023/11/07 19:24:01 by fduzant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBRAIRIES_H
-# define LIBRAIRIES_H
+#include "utils.h"
 
-# include <unistd.h>
-# include <stdio.h>
-# include <stdlib.h>
-# include <stdbool.h>
-# include <math.h>
-
-#endif
+/* Close a file descriptor and set it to -1 */
+void	ft_close(int *fd)
+{
+	if (*fd != -1)
+		close(*fd);
+	*fd = -1;
+}
