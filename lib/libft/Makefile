@@ -6,7 +6,7 @@
 #    By: tmalless <tmalless@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/14 15:11:42 by tmalless          #+#    #+#              #
-#    Updated: 2022/11/18 11:25:07 by tmalless         ###   ########.fr        #
+#    Updated: 2023/11/20 16:18:28 by tmalless         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,6 +39,6 @@ clean :
 	rm -f $(OBJECT) $(OBJECTBONUS)
 
 fclean : clean
-	rm -f libft.all
+	rm -f libft.a
 
 re : fclean all
