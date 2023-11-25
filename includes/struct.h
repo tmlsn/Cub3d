@@ -6,7 +6,7 @@
 /*   By: tmalless <tmalless@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 17:17:30 by fduzant           #+#    #+#             */
-/*   Updated: 2023/11/25 12:20:53 by tmalless         ###   ########.fr       */
+/*   Updated: 2023/11/25 16:52:06 by tmalless         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,9 @@ typedef struct s_ray
 {
 	int		mx;
 	int		my;
-	int		xo;
-	int		yo;
+	float	xo;
+	float	yo;
+	int		dof;
 	float	rx;
 	float	ry;
 	float	hx;
@@ -89,19 +90,19 @@ typedef struct s_win
 }				t_win;
 
 
-typedef struct s_img
+/* typedef struct s_img
 {
 	void	*img;
 	int		*addr;
 	int		bpp;
 	int		ll;
 }				t_img;
-
-typedef struct s_texture
+ */
+/* typedef struct s_texture
 {
 	t_img	text;
 	char	*path;
-}				t_texture;
+}	 		t_texture;*/	
 
 typedef struct s_data
 {
@@ -111,11 +112,11 @@ typedef struct s_data
 	t_player	p;
 	t_ray		r;
 	t_win		w;
-	t_img		m_img;
+	/* t_img		m_img;
 	t_texture	north;
 	t_texture	south;
 	t_texture	west;
-	t_texture	east;
+	t_texture	east; */
 }				t_data;
 
 #endif

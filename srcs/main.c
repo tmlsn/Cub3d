@@ -6,7 +6,7 @@
 /*   By: tmalless <tmalless@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 13:09:26 by tmalless          #+#    #+#             */
-/*   Updated: 2023/11/16 11:52:26 by tmalless         ###   ########.fr       */
+/*   Updated: 2023/11/25 14:28:12 by tmalless         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ int	main(int ac, char **av)
 	if (!g->mlx)
 		return (printf("zebi\n"));
 	g->mlx_win = mlx_new_window(g->mlx, 1080, 720, "zeubi");
+	
 	// g->mlx_win = mlx_new_window(g->mlx, 32 * g->map.width, 32 * g->map.height, "zeubi");
 	/* g->map.height = 32 * 8;
 	g->map.width = 32 * 8; */
