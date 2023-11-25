@@ -6,7 +6,7 @@
 /*   By: tmalless <tmalless@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/14 14:19:01 by tmalless          #+#    #+#             */
-/*   Updated: 2023/11/16 09:10:25 by tmalless         ###   ########.fr       */
+/*   Updated: 2023/11/25 19:22:07 by tmalless         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	draw_game(t_data *g, float ra, float dist, int r)
 		j = 0;
 	while (j < offset)
 	{
-		mlx_pixel_put(g->mlx, g->mlx_win, r, j, 0300555120);
+		mlx_pixel_put(g->mlx, g->mlx_win, r, j, g->ceiling_color);
 		j++;
 	}
 	while (j < height + offset)
@@ -43,7 +43,7 @@ void	draw_game(t_data *g, float ra, float dist, int r)
 	}
 	while (j < 720)
 	{
-		mlx_pixel_put(g->mlx, g->mlx_win, r, j, 99000999);
+		mlx_pixel_put(g->mlx, g->mlx_win, r, j, g->floor_color);
 		j++;
 	}
 }
