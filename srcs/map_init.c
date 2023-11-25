@@ -6,47 +6,33 @@
 /*   By: tmalless <tmalless@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 16:15:18 by tmalless          #+#    #+#             */
-/*   Updated: 2023/11/07 11:28:00 by tmalless         ###   ########.fr       */
+/*   Updated: 2023/11/25 10:29:38 by tmalless         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
-int	map_height(char *av)
+int	map_height(char **av)
 {
 	int		height;
-	int		fd;
-	char	*line;
 
-	height = 1;
-	fd = open(av, O_RDONLY);
-	line = get_next_line(fd);
-	while (line)
-	{
+	height = 0;
+	while (av[height])
 		height++;
-		free(line);
-		line = get_next_line(fd);
-	}
-	free(line);
-	close(fd);
 	return (height);
 }
 
-int	map_width(char *av)
+int	map_width(char **av)
 {
 	int		width;
-	int		fd;
-	char	*line;
 
-	fd = open(av, O_RDONLY);
-	line = get_next_line(fd);
-	width = ft_strlen(line);
-	free(line);
-	close(fd);
+	width = 0;
+	while (av[0][width])
+		width++;
 	return (width);
 }
 
-char	**dup_map(char *av)
+/* char	**dup_map(char *av)
 {
 	int		i;
 	int		fd;
@@ -70,12 +56,12 @@ char	**dup_map(char *av)
 	map[i] = 0;
 	close(fd);
 	return (map);
-}
+} */
 
 void	init_map(t_data *game, char *av)
 {
-	game->map.file = av;
-	game->map.height = map_height(av) - 1;
-	game->map.width = map_width(av) - 1;
-	game->map.map = dup_map(av);
+	game->m.file = av;
+	game->m.height = map_height(game->map) - 1;
+	game->m.width = map_width(game->map) - 1;
+	game->m.map = game->map;
 }

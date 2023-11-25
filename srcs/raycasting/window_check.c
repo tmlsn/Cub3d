@@ -6,7 +6,7 @@
 /*   By: tmalless <tmalless@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 16:39:01 by tmalless          #+#    #+#             */
-/*   Updated: 2023/11/16 09:58:19 by tmalless         ###   ########.fr       */
+/*   Updated: 2023/11/25 10:27:24 by tmalless         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,9 @@ void	print_map(char **map)
 
 void	break_window(t_data *g)
 {
-	if (g->map.map[(int)(g->p.y + g->p.dy * 8) / 32][(int)(g->p.x + g->p.dx * 8) / 32] == 'V')
-		g->map.map[(int)(g->p.y + g->p.dy * 8) / 32][(int)(g->p.x + g->p.dx * 8) / 32] = '0';
-	/* print_map(g->map.map); */
+	if (g->m.map[(int)(g->p.y + g->p.dy * 8) / 32][(int)(g->p.x + g->p.dx * 8) / 32] == 'V')
+		g->m.map[(int)(g->p.y + g->p.dy * 8) / 32][(int)(g->p.x + g->p.dx * 8) / 32] = '0';
+	/* print_map(g->m.map); */
 }
 
 void	winv(t_data *g, float ra)
@@ -58,20 +58,20 @@ void	winv(t_data *g, float ra)
 		{
 			g->r.wvx = g->p.x;
 			g->r.wvy = g->p.y;
-			dof = g->map.height;
+			dof = g->m.height;
 		}
-		while (dof < g->map.height)
+		while (dof < g->m.height)
 		{
 			mx = (int)(g->r.wvx) >> 5;
 			my = (int)(g->r.wvy) >> 5;
 			// printf("g->r.vx: %f, g->r.vy: %f\n", g->r.vx, g->r.vy);
 			// printf("mx: %d, my: %d\n", mx, my);
 			if (my >= 0 && mx >= 0
-				&& mx < g->map.width && my < g->map.height
-				&& g->map.map[my][mx] == 'V')
+				&& mx < g->m.width && my < g->m.height
+				&& g->m.map[my][mx] == 'V')
 			{
 				g->r.isw = 1;
-				dof = g->map.height;
+				dof = g->m.height;
 			}
 			else
 			{
@@ -111,20 +111,20 @@ void	winh(t_data *g, float ra)
 		{
 			g->r.whx = g->p.x;
 			g->r.why = g->p.y;
-			dof = g->map.height;
+			dof = g->m.height;
 		}
-		while (dof < g->map.width)
+		while (dof < g->m.width)
 		{
 			mx = (int)(g->r.whx) >> 5;
 			my = (int)(g->r.why) >> 5;
 /* 			printf("g->r.hx: %f, g->r.hy: %f\n", g->r.hx, g->r.hy);
 			printf("mx: %d, my: %d\n", mx, my); */
 			if (my >= 0 && mx >= 0
-				&& mx < g->map.width && my < g->map.height
-				&& g->map.map[my][mx] == 'V')
+				&& mx < g->m.width && my < g->m.height
+				&& g->m.map[my][mx] == 'V')
 			{
 				g->r.isw = 1;
-				dof = g->map.width;
+				dof = g->m.width;
 			}
 			else
 			{

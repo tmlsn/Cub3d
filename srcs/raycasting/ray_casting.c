@@ -6,7 +6,7 @@
 /*   By: tmalless <tmalless@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 10:02:48 by tmalless          #+#    #+#             */
-/*   Updated: 2023/11/15 18:59:46 by tmalless         ###   ########.fr       */
+/*   Updated: 2023/11/25 10:27:00 by tmalless         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,17 +42,17 @@ void	ray_casterv(t_data *g, float ra)
 			g->r.vy = g->p.y;
 			dof = 8;
 		}
-		while (dof < g->map.height)
+		while (dof < g->m.height)
 		{
 			mx = (int)(g->r.vx) >> 5;
 			my = (int)(g->r.vy) >> 5;
 			// printf("g->r.vx: %f, g->r.vy: %f\n", g->r.vx, g->r.vy);
 			// printf("mx: %d, my: %d\n", mx, my);
 			if (my >= 0 && mx >= 0
-				&& mx < g->map.width && my < g->map.height
-				&& g->map.map[my][mx] == '1')
+				&& mx < g->m.width && my < g->m.height
+				&& g->m.map[my][mx] == '1')
 			{
-				dof = g->map.height;
+				dof = g->m.height;
 			}
 			else
 			{
@@ -94,17 +94,17 @@ void	ray_casterh(t_data *g, float ra)
 			g->r.hy = g->p.y;
 			dof = 8;
 		}
-		while (dof < g->map.width)
+		while (dof < g->m.width)
 		{
 			mx = (int)(g->r.hx) >> 5;
 			my = (int)(g->r.hy) >> 5;
 /* 			printf("g->r.hx: %f, g->r.hy: %f\n", g->r.hx, g->r.hy);
 			printf("mx: %d, my: %d\n", mx, my); */
 			if (my >= 0 && mx >= 0
-				&& mx < g->map.width && my < g->map.height
-				&& g->map.map[my][mx] == '1')
+				&& mx < g->m.width && my < g->m.height
+				&& g->m.map[my][mx] == '1')
 			{
-				dof = g->map.width;
+				dof = g->m.width;
 			}
 			else
 			{

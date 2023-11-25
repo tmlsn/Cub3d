@@ -6,7 +6,7 @@
 /*   By: tmalless <tmalless@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 10:05:31 by tmalless          #+#    #+#             */
-/*   Updated: 2023/11/16 12:03:34 by tmalless         ###   ########.fr       */
+/*   Updated: 2023/11/25 10:27:50 by tmalless         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,15 +93,15 @@ void	print_small_map(t_data *g)
 
 	i = 0;
 	j = 0;
-	while (g->map.map[i])
+	while (g->m.map[i])
 	{
-		while (g->map.map[i][j])
+		while (g->m.map[i][j])
 		{
-			if (g->map.map[i][j] == '1')
+			if (g->m.map[i][j] == '1')
 				fill_wall(g, i, j);
-			else if (g->map.map[i][j] == '0')
+			else if (g->m.map[i][j] == '0')
 				fill_floor(g, i, j);
-			else if (g->map.map[i][j] == 'V')
+			else if (g->m.map[i][j] == 'V')
 				fill(g, i, j);
 			j++;
 		}
@@ -119,13 +119,13 @@ void	print_thin_map(t_data *g, int m)
 	i = get_i(g);
 	j = 0;
 	k = i + 9;
-	while (g->map.map[i] && i < k)
+	while (g->m.map[i] && i < k)
 	{
-		while (g->map.map[i][j])
+		while (g->m.map[i][j])
 		{
-			if (g->map.map[i][j] == '1')
+			if (g->m.map[i][j] == '1')
 				fill_wall(g, m, j);
-			else if (g->map.map[i][j] == '0')
+			else if (g->m.map[i][j] == '0')
 				fill_floor(g, m, j);
 			j++;
 		}
@@ -144,13 +144,13 @@ void	print_low_map(t_data *g, int n)
 	i = 0;
 	j = get_j(g);
 	l = j + 9;
-	while (g->map.map[i])
+	while (g->m.map[i])
 	{
-		while (g->map.map[i][j] && j < l)
+		while (g->m.map[i][j] && j < l)
 		{
-			if (g->map.map[i][j] == '1')
+			if (g->m.map[i][j] == '1')
 				fill_wall(g, i, n);
-			else if (g->map.map[i][j] == '0')
+			else if (g->m.map[i][j] == '0')
 				fill_floor(g, i, n);
 			j++;
 			n++;
@@ -163,9 +163,9 @@ void	print_low_map(t_data *g, int n)
 
 void	print_semi_small_map(t_data *g)
 {
-	if (g->map.height < 9)
+	if (g->m.height < 9)
 		print_low_map(g, 0);
-	else if (g->map.width < 9)
+	else if (g->m.width < 9)
 		print_thin_map(g, 0);
 }
 
@@ -175,8 +175,8 @@ int	get_i(t_data *g)
 	
 	if (g->p.y / 32 < 4)
 		i = 0;
-	else if ((int)(g->p.y / 32 + 5) > g->map.height)
-		i = g->map.height - 9;
+	else if ((int)(g->p.y / 32 + 5) > g->m.height)
+		i = g->m.height - 9;
 	else
 		i = g->p.y / 32 - 4;
 	printf("i : %d\n", i);
@@ -189,8 +189,8 @@ int	get_j(t_data *g)
 	
 	if (g->p.x / 32 < 4)
 		j = 0;
-	else if ((int)(g->p.x / 32 + 5) > g->map.width)
-		j = g->map.width - 9;
+	else if ((int)(g->p.x / 32 + 5) > g->m.width)
+		j = g->m.width - 9;
 	else
 		j = g->p.x / 32 - 4;
 	printf("j : %d\n", j);
@@ -206,13 +206,13 @@ void	print_big_map(t_data *g, int k, int l, int m, int n)
 	j = get_j(g);
 	k = i + 9;
 	l = j + 9;
-	while (g->map.map[i] && i < k)
+	while (g->m.map[i] && i < k)
 	{
-		while (g->map.map[i][j] && j < l)
+		while (g->m.map[i][j] && j < l)
 		{
-			if (g->map.map[i][j] == '1')
+			if (g->m.map[i][j] == '1')
 				fill_wall(g, m, n);
-			else if (g->map.map[i][j] == '0')
+			else if (g->m.map[i][j] == '0')
 				fill_floor(g, m, n);
 			j++;
 			n++;
@@ -226,9 +226,9 @@ void	print_big_map(t_data *g, int k, int l, int m, int n)
 
 void	draw_map(t_data *g)
 {
-	if (g->map.height < 9 && g->map.width < 9)
+	if (g->m.height < 9 && g->m.width < 9)
 		print_small_map(g);
-	else if (g->map.height < 9 && g->map.width < 9)
+	else if (g->m.height < 9 && g->m.width < 9)
 		print_semi_small_map(g);
 	else
 		print_big_map(g, 0, 0, 0, 0);
