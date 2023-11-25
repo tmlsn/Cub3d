@@ -6,7 +6,7 @@
 /*   By: tmalless <tmalless@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 16:15:18 by tmalless          #+#    #+#             */
-/*   Updated: 2023/11/07 11:28:00 by tmalless         ###   ########.fr       */
+/*   Updated: 2023/11/25 18:21:37 by tmalless         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,8 +74,7 @@ char	**dup_map(char *av)
 
 void	init_map(t_data *game, char *av)
 {
-	game->map.file = av;
-	game->map.height = map_height(av) - 1;
-	game->map.width = map_width(av) - 1;
-	game->map.map = dup_map(av);
+	game->map_height = map_height(av) - 1;
+	game->map_width = map_width(av) - 1;
+	game->map = dup_map(av);
 }

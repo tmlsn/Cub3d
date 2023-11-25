@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: fduzant <fduzant@student.42.fr>            +#+  +:+       +#+         #
+#    By: tmalless <tmalless@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/14 15:11:42 by tmalless          #+#    #+#              #
-#    Updated: 2023/11/15 14:17:13 by fduzant          ###   ########.fr        #
+#    Updated: 2023/11/25 18:31:10 by tmalless         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,6 +39,6 @@ clean :
 	rm -f $(OBJECT) $(OBJECTBONUS)
 
 fclean : clean
-	rm -f libft.all
+	rm -f libft.a
 
 re : fclean all

@@ -6,7 +6,7 @@
 /*   By: tmalless <tmalless@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 09:50:02 by tmalless          #+#    #+#             */
-/*   Updated: 2023/11/15 09:51:16 by tmalless         ###   ########.fr       */
+/*   Updated: 2023/11/25 18:22:00 by tmalless         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,6 @@
 
 int	exit_game(int err)
 {
-	exit(1);
+	exit(err);
 	return (-1);
 }

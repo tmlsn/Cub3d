@@ -6,7 +6,7 @@
 #    By: tmalless <tmalless@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/16 17:21:31 by tmalless          #+#    #+#              #
-#    Updated: 2023/11/25 18:03:16 by tmalless         ###   ########.fr        #
+#    Updated: 2023/11/25 18:30:39 by tmalless         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,14 +29,11 @@ PARSING = parsing/parsing.c parsing/check_file.c parsing/check_file_items.c pars
 UTILS = utils/ft_error.c utils/ft_close.c utils/ft_split_endl.c utils/ft_free.c utils/ft_count_nb_line.c \
 		utils/ft_line_lowercase.c utils/ft_atoi_base.c utils/destroy_data.c
 
-UNDEFINED = map_init.c player_init.c key_bindings.c 
-
-SRCS = main.c $(UTILS) $(PARSING)
 UNDEFINED = map_init.c player_init.c key_bindings.c exit.c
 
 3D = 3D/3D_render.c
 
-SRCS = main.c $(RAYCASTING) $(UNDEFINED) $(MOVE) $(DRAW) $(3D)
+SRCS = main.c $(RAYCASTING) $(UNDEFINED) $(MOVE) $(DRAW) $(3D) $(PARSING) $(UTILS)
 SRCS := $(addprefix $(SRCS_PATH), $(SRCS))
 
 OBJECT = $(SRCS:.c=.o)

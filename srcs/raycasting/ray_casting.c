@@ -6,7 +6,7 @@
 /*   By: tmalless <tmalless@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 10:02:48 by tmalless          #+#    #+#             */
-/*   Updated: 2023/11/25 17:37:55 by tmalless         ###   ########.fr       */
+/*   Updated: 2023/11/25 18:19:49 by tmalless         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,20 +32,20 @@ void	rcv_from_uad(t_data *g)
 {
 	g->r.vx = g->p.x;
 	g->r.vy = g->p.y;
-	g->r.dof = 8;
+	g->r.dof = g->map_height;
 }
 
 void	find_rcv(t_data *g)
 {
-	while (g->r.dof < g->map.height)
+	while (g->r.dof < g->map_height)
 	{
 		g->r.mx = (int)(g->r.vx) >> 5;
 		g->r.my = (int)(g->r.vy) >> 5;
 		if (g->r.my >= 0 && g->r.mx >= 0
-			&& g->r.mx < g->map.width && g->r.my < g->map.height
-			&& g->map.map[g->r.my][g->r.mx] == '1')
+			&& g->r.mx < g->map_width && g->r.my < g->map_height
+			&& g->map[g->r.my][g->r.mx] == '1')
 		{
-			g->r.dof = g->map.height;
+			g->r.dof = g->map_height;
 		}
 		else
 		{
@@ -89,20 +89,20 @@ void	rch_from_side(t_data *g)
 {
 	g->r.hx = g->p.x;
 	g->r.hy = g->p.y;
-	g->r.dof = 8;
+	g->r.dof = g->map_width;
 }
 
 void	find_rch(t_data *g)
 {
-	while (g->r.dof < g->map.width)
+	while (g->r.dof < g->map_width)
 	{
 		g->r.mx = (int)(g->r.hx) >> 5;
 		g->r.my = (int)(g->r.hy) >> 5;
 		if (g->r.my >= 0 && g->r.mx >= 0
-			&& g->r.mx < g->map.width && g->r.my < g->map.height
-			&& g->map.map[g->r.my][g->r.mx] == '1')
+			&& g->r.mx < g->map_width && g->r.my < g->map_height
+			&& g->map[g->r.my][g->r.mx] == '1')
 		{
-			g->r.dof = g->map.width;
+			g->r.dof = g->map_width;
 		}
 		else
 		{
@@ -126,7 +126,7 @@ void	ray_casterh(t_data *g, float ra)
 	find_rch(g);
 }
 
-float	dist(float px, float py, float rx, float ry, float ra)
+float	dist(float px, float py, float rx, float ry)
 {
 	return (sqrt((ry - py) * (ry - py) + (rx - px) * (rx - px)));
 }
@@ -153,10 +153,10 @@ void	pick_h(t_data *g)
 		g->r.color = 800200300;
 }
 
-void	pick_v_or_h(t_data *g, int r)
+void	pick_v_or_h(t_data *g)
 {
-	g->r.dish = dist(g->p.x, g->p.y, g->r.hx, g->r.hy, g->p.a);
-	g->r.disv = dist(g->p.x, g->p.y, g->r.vx, g->r.vy, g->p.a);
+	g->r.dish = dist(g->p.x, g->p.y, g->r.hx, g->r.hy);
+	g->r.disv = dist(g->p.x, g->p.y, g->r.vx, g->r.vy);
 	if (g->r.dish == g->r.disv || (g->r.dish - g->r.disv < 0.1
 			&& g->r.dish - g->r.disv > -0.1))
 	{
@@ -194,9 +194,9 @@ void	ray_caster(t_data *g)
 		ray_clean(g);
 		ray_casterh(g, a),
 		ray_casterv(g, a),
-		pick_v_or_h(g, r);
+		pick_v_or_h(g);
 		draw_game(g, a, g->r.dist, r);
-		win_check(g, r, a);
+		win_check(g, a);
 		if (g->r.isw && g->r.wind < g->r.dist)
 			draw_window(g, a, g->r.wind, r);
 		a += (DR / 18);

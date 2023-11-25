@@ -6,7 +6,7 @@
 /*   By: tmalless <tmalless@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 16:39:01 by tmalless          #+#    #+#             */
-/*   Updated: 2023/11/25 17:14:23 by tmalless         ###   ########.fr       */
+/*   Updated: 2023/11/25 18:19:07 by tmalless         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,9 @@ void	print_map(char **map)
 
 void	break_window(t_data *g)
 {
-	if (g->map.map[(int)(g->p.y + g->p.dy * 8) / 32]
+	if (g->map[(int)(g->p.y + g->p.dy * 8) / 32]
 		[(int)(g->p.x + g->p.dx * 8) / 32] == 'V')
-		g->map.map[(int)(g->p.y + g->p.dy * 8) / 32]
+		g->map[(int)(g->p.y + g->p.dy * 8) / 32]
 		[(int)(g->p.x + g->p.dx * 8) / 32] = '0';
 }
 
@@ -53,21 +53,21 @@ void	winv_from_uad(t_data *g)
 {
 	g->r.wvx = g->p.x;
 	g->r.wvy = g->p.y;
-	g->r.dof = g->map.height;
+	g->r.dof = g->map_height;
 }
 
 void	find_winv(t_data *g)
 {
-	while (g->r.dof < g->map.height)
+	while (g->r.dof < g->map_height)
 	{
 		g->r.mx = (int)(g->r.wvx) >> 5;
 		g->r.my = (int)(g->r.wvy) >> 5;
 		if (g->r.my >= 0 && g->r.mx >= 0
-			&& g->r.mx < g->map.width && g->r.my < g->map.height
-			&& g->map.map[g->r.my][g->r.mx] == 'V')
+			&& g->r.mx < g->map_width && g->r.my < g->map_height
+			&& g->map[g->r.my][g->r.mx] == 'V')
 		{
 			g->r.isw = 1;
-			g->r.dof = g->map.height;
+			g->r.dof = g->map_height;
 		}
 		else
 		{
@@ -111,21 +111,21 @@ void	winh_from_side(t_data *g)
 {
 	g->r.whx = g->p.x;
 	g->r.why = g->p.y;
-	g->r.dof = g->map.width;
+	g->r.dof = g->map_width;
 }
 
 void	find_winh(t_data *g)
 {
-	while (g->r.dof < g->map.width)
+	while (g->r.dof < g->map_width)
 	{
 		g->r.mx = (int)(g->r.whx) >> 5;
 		g->r.my = (int)(g->r.why) >> 5;
 		if (g->r.my >= 0 && g->r.mx >= 0
-			&& g->r.mx < g->map.width && g->r.my < g->map.height
-			&& g->map.map[g->r.my][g->r.mx] == 'V')
+			&& g->r.mx < g->map_width && g->r.my < g->map_height
+			&& g->map[g->r.my][g->r.mx] == 'V')
 		{
 			g->r.isw = 1;
-			g->r.dof = g->map.width;
+			g->r.dof = g->map_width;
 		}
 		else
 		{
@@ -149,10 +149,10 @@ void	winh(t_data *g, float ra)
 	find_winh(g);
 }
 
-void	win_v_or_h(t_data *g, int r)
+void	win_v_or_h(t_data *g)
 {
-	g->r.winh = dist(g->p.x, g->p.y, g->r.whx, g->r.why, g->p.a);
-	g->r.winv = dist(g->p.x, g->p.y, g->r.wvx, g->r.wvy, g->p.a);
+	g->r.winh = dist(g->p.x, g->p.y, g->r.whx, g->r.why);
+	g->r.winv = dist(g->p.x, g->p.y, g->r.wvx, g->r.wvy);
 	if (g->r.winh < g->r.winv)
 	{
 		g->r.wx = g->r.whx;
@@ -169,9 +169,9 @@ void	win_v_or_h(t_data *g, int r)
 	g->r.winv = 0;
 }
 
-void	win_check(t_data *g, int r, float ra)
+void	win_check(t_data *g, float ra)
 {
 	winh(g, ra);
 	winv(g, ra);
-	win_v_or_h(g, r);
+	win_v_or_h(g);
 }

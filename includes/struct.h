@@ -6,7 +6,7 @@
 /*   By: tmalless <tmalless@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 17:17:30 by fduzant           #+#    #+#             */
-/*   Updated: 2023/11/25 18:03:52 by tmalless         ###   ########.fr       */
+/*   Updated: 2023/11/25 18:29:09 by tmalless         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -148,20 +148,15 @@ typedef struct s_data
 	char		**map;
 	int			map_width;
 	int			map_height;
-	t_player	*player;
 	int			x;
 	bool		minimap;
 	void		*mlx;
 	void		*mlx_win;
-	t_map		map;
+	t_map		m;
 	t_player	p;
+	t_player	*player;
 	t_ray		r;
 	t_win		w;
-	/* t_img		m_img;
-	t_texture	north;
-	t_texture	south;
-	t_texture	west;
-	t_texture	east; */
 }				t_data;
 
 #endif
