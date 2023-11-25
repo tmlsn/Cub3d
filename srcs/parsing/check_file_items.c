@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_file_items.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fduzant <fduzant@student.42.fr>            +#+  +:+       +#+        */
+/*   By: tmalless <tmalless@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 14:16:19 by fduzant           #+#    #+#             */
-/*   Updated: 2023/11/15 14:02:56 by fduzant          ###   ########.fr       */
+/*   Updated: 2023/11/25 11:38:46 by tmalless         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	get_texture(char **direction, char *line, int *valid)
 	start = 2;
 	while (line[start] == ' ')
 		start++;
-	*direction = ft_substr(line, start, ft_strlen(line));
+	*direction = ft_substr(line, start, ft_strlen(line) - start);
 	if (!*direction)
 		return (ft_error(ERROR_MALLOC));
 	*valid = true;
@@ -90,9 +90,9 @@ char **file, int valid[6])
 	int	i;
 	int	status;
 
-	i = -1;
+	i = 0;
 	status = 0;
-	while (file[i++])
+	while (file[i])
 	{
 		if (ft_strncmp(file[i], "NO ", 3) == 0)
 			status = get_texture(&texture_path[NO], file[i], &valid[NO]);
@@ -108,6 +108,7 @@ char **file, int valid[6])
 			status = get_color(&data->ceiling_color, file[i], &valid[C]);
 		if (status == EXIT_FAILURE)
 			return (EXIT_FAILURE);
+		i++;
 	}
 	return (EXIT_SUCCESS);
 }
