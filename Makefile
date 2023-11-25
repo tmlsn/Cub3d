@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: fduzant <fduzant@student.42.fr>            +#+  +:+       +#+         #
+#    By: tmalless <tmalless@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/16 17:21:31 by tmalless          #+#    #+#              #
-#    Updated: 2023/11/25 16:08:02 by fduzant          ###   ########.fr        #
+#    Updated: 2023/11/25 18:03:16 by tmalless         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ NAME = cub3D
 SRCS_PATH	= ./srcs/
 INCS_PATH	= ./includes/
 
-RAYCASTING = raycasting/ray_casting.c
+RAYCASTING = raycasting/ray_casting.c raycasting/window_check.c
 
 MOVE = movement/handle_mooves.c movement/handle_wall.c movement/handle_look.c
 
@@ -32,6 +32,11 @@ UTILS = utils/ft_error.c utils/ft_close.c utils/ft_split_endl.c utils/ft_free.c 
 UNDEFINED = map_init.c player_init.c key_bindings.c 
 
 SRCS = main.c $(UTILS) $(PARSING)
+UNDEFINED = map_init.c player_init.c key_bindings.c exit.c
+
+3D = 3D/3D_render.c
+
+SRCS = main.c $(RAYCASTING) $(UNDEFINED) $(MOVE) $(DRAW) $(3D)
 SRCS := $(addprefix $(SRCS_PATH), $(SRCS))
 
 OBJECT = $(SRCS:.c=.o)

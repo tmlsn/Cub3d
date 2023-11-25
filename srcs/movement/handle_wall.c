@@ -6,7 +6,7 @@
 /*   By: tmalless <tmalless@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 10:21:46 by tmalless          #+#    #+#             */
-/*   Updated: 2023/11/07 10:42:19 by tmalless         ###   ########.fr       */
+/*   Updated: 2023/11/15 19:00:31 by tmalless         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	wall_check(float a, t_data *g)
 	{
 		while (j < 3)
 		{
-			if (g->map.map[(int)((g->p.y + sin(a) * 3 + i) / 32)][(int)((g->p.x + cos(a) * 3 + j) / 32)] == '1')
+			if (g->map.map[(int)((g->p.y + sin(a) * 3 + i) / 32)][(int)((g->p.x + cos(a) * 3 + j) / 32)] != '0')
 				return (1);
 			/* else if (way && g->map.map[(int)((g->p.y - g->p.dy - i) / 32)][(int)((g->p.x - g->p.dx - j) / 32)] == '1')
 				return (1); */

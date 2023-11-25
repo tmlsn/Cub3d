@@ -1,26 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   raycast.h                                          :+:      :+:    :+:   */
+/*   init_img.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tmalless <tmalless@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/07 17:17:23 by fduzant           #+#    #+#             */
-/*   Updated: 2023/11/16 09:14:18 by tmalless         ###   ########.fr       */
+/*   Created: 2023/11/25 12:53:46 by tmalless          #+#    #+#             */
+/*   Updated: 2023/11/25 14:29:07 by tmalless         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef RAYCAST_H
-# define RAYCAST_H
+#include "cub3d.h"
 
-// RAY CASTING
-void	ray_caster(t_data *g);
-void	win_check(t_data *g, int r, float ra);
-float	dist(float px, float py, float rx, float ry, float ra);
-
-// 3D RENDER
-void	draw_game(t_data *g, float ra, float dist, int r);
-void	draw_window(t_data *g, float ra, float dist, int r);
-void	break_window(t_data *g);
-
-#endif
+void	init_img(t_data *g)
+{
+	g->m_img.img = mlx_new_image(g->mlx, 1080, 720);
+}

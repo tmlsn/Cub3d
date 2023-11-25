@@ -6,114 +6,124 @@
 /*   By: tmalless <tmalless@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 10:02:48 by tmalless          #+#    #+#             */
-/*   Updated: 2023/11/07 10:42:21 by tmalless         ###   ########.fr       */
+/*   Updated: 2023/11/25 17:37:55 by tmalless         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
+void	rcv_from_left(float aTan, t_data *g)
+{
+	g->r.vx = (((int)g->p.x >> 5) << 5) - 0.001;
+	g->r.vy = (g->p.x - g->r.vx) * aTan + g->p.y;
+	g->r.xo = -32;
+	g->r.yo = -g->r.xo * aTan;
+}
+
+void	rcv_from_right(float aTan, t_data *g)
+{
+	g->r.vx = (((int)g->p.x >> 5) << 5) + 32;
+	g->r.vy = (g->p.x - g->r.vx) * aTan + g->p.y;
+	g->r.xo = 32;
+	g->r.yo = -g->r.xo * aTan;
+}
+
+void	rcv_from_uad(t_data *g)
+{
+	g->r.vx = g->p.x;
+	g->r.vy = g->p.y;
+	g->r.dof = 8;
+}
+
+void	find_rcv(t_data *g)
+{
+	while (g->r.dof < g->map.height)
+	{
+		g->r.mx = (int)(g->r.vx) >> 5;
+		g->r.my = (int)(g->r.vy) >> 5;
+		if (g->r.my >= 0 && g->r.mx >= 0
+			&& g->r.mx < g->map.width && g->r.my < g->map.height
+			&& g->map.map[g->r.my][g->r.mx] == '1')
+		{
+			g->r.dof = g->map.height;
+		}
+		else
+		{
+			g->r.vx += g->r.xo;
+			g->r.vy += g->r.yo;
+			g->r.dof++;
+		}
+	}
+}
+
 void	ray_casterv(t_data *g, float ra)
 {
-	float xo;
-	float yo;
-	float aTan;
-	int dof = 0;
-	int mx, my;
+	g->r.dof = 0;
 
-	aTan = -(tan(ra));
-	//printf("%f\n", tan(ra));
-		if (ra > P2 && ra < P3)
+	if (ra > P2 && ra < P3)
+		rcv_from_left(-(tan(ra)), g);
+	if (ra < P2 || ra > P3)
+		rcv_from_right(-(tan(ra)), g);
+	if (ra == P2 || ra == P3)
+		rcv_from_uad(g);
+	find_rcv(g);
+}
+
+void	rch_from_under(float aTan, t_data *g)
+{
+	g->r.hy = (((int)g->p.y >> 5) << 5) - 0.001;
+	g->r.hx = (g->p.y - g->r.hy) * aTan + g->p.x;
+	g->r.yo = -32;
+	g->r.xo = -g->r.yo * aTan;
+}
+
+void	rch_from_above(float aTan, t_data *g)
+{
+	g->r.hy = (((int)g->p.y >> 5) << 5) + 32;
+	g->r.hx = (g->p.y - g->r.hy) * aTan + g->p.x;
+	g->r.yo = 32;
+	g->r.xo = -g->r.yo * aTan;
+}
+
+void	rch_from_side(t_data *g)
+{
+	g->r.hx = g->p.x;
+	g->r.hy = g->p.y;
+	g->r.dof = 8;
+}
+
+void	find_rch(t_data *g)
+{
+	while (g->r.dof < g->map.width)
+	{
+		g->r.mx = (int)(g->r.hx) >> 5;
+		g->r.my = (int)(g->r.hy) >> 5;
+		if (g->r.my >= 0 && g->r.mx >= 0
+			&& g->r.mx < g->map.width && g->r.my < g->map.height
+			&& g->map.map[g->r.my][g->r.mx] == '1')
 		{
-			g->r.vx = (((int)g->p.x>>5)<<5) - 0.001;
-			g->r.vy = (g->p.x - g->r.vx) * aTan + g->p.y;
-			xo = -32;
-			yo = -xo * aTan;
+			g->r.dof = g->map.width;
 		}
-		if (ra < P2 || ra > P3)
+		else
 		{
-			g->r.vx = (((int)g->p.x >> 5) << 5) + 32;
-			g->r.vy = (g->p.x - g->r.vx) * aTan + g->p.y;
-			xo = 32;
-			yo = -xo * aTan;
+			g->r.hx += g->r.xo;
+			g->r.hy += g->r.yo;
+			g->r.dof++;
 		}
-		if (ra == P2 || ra == P3)
-		{
-			g->r.vx = g->p.x;
-			g->r.vy = g->p.y;
-			dof = 8;
-		}
-		while (dof < 8)
-		{
-			mx = (int)(g->r.vx) >> 5;
-			my = (int)(g->r.vy) >> 5;
-			// printf("g->r.vx: %f, g->r.vy: %f\n", g->r.vx, g->r.vy);
-			// printf("mx: %d, my: %d\n", mx, my);
-			if (my >= 0 && mx >= 0
-				&& mx < 8 && my < 8
-				&& g->map.map[my][mx] == '1')
-			{
-				dof = 8;
-			}
-			else
-			{
-				g->r.vx+=xo;
-				g->r.vy+=yo;
-				dof++;
-			}
-		}
-	//mlx_pixel_put(g->mlx, g->mlx_win, g->r.vx, g->r.vy, 255);
+	}
 }
 
 void	ray_casterh(t_data *g, float ra)
 {
-	float xo;
-	float yo;
-	float aTan;
-	int dof = 0;
-	int mx, my;
+	g->r.dof = 0;
 
-	aTan = -1/(tan(ra));
-	//printf("%f\n", tan(ra));
-		if (ra > PI)
-		{
-			g->r.hy = (((int)g->p.y>>5)<<5) - 0.001;
-			g->r.hx = (g->p.y - g->r.hy) * aTan + g->p.x;
-			yo = -32;
-			xo= -yo * aTan;
-		}
-		if (ra < PI)
-		{
-			g->r.hy = (((int)g->p.y>>5)<<5) + 32;
-			g->r.hx = (g->p.y - g->r.hy) * aTan + g->p.x;
-			yo = 32;
-			xo= -yo * aTan;
-		}
-		if (ra == 0 || ra == PI)
-		{
-			g->r.hx = g->p.x;
-			g->r.hy = g->p.y;
-			dof = 8;
-		}
-		while (dof < 8)
-		{
-			mx = (int)(g->r.hx) >> 5;
-			my = (int)(g->r.hy) >> 5;
-/* 			printf("g->r.hx: %f, g->r.hy: %f\n", g->r.hx, g->r.hy);
-			printf("mx: %d, my: %d\n", mx, my); */
-			if (my >= 0 && mx >= 0
-				&& mx < 8 && my < 8
-				&& g->map.map[my][mx] == '1')
-			{
-				dof = 8;
-			}
-			else
-			{
-				g->r.hx += xo;
-				g->r.hy += yo;
-				dof++;
-			}
-		}
-	//mlx_pixel_put(g->mlx, g->mlx_win, g->r.hx, g->r.hy, 255);
+	if (ra > PI)
+		rch_from_under(-1 / (tan(ra)), g);
+	if (ra < PI)
+		rch_from_above(-1 / (tan(ra)), g);
+	if (ra == 0 || ra == PI)
+		rch_from_side(g);
+	find_rch(g);
 }
 
 float	dist(float px, float py, float rx, float ry, float ra)
@@ -121,34 +131,75 @@ float	dist(float px, float py, float rx, float ry, float ra)
 	return (sqrt((ry - py) * (ry - py) + (rx - px) * (rx - px)));
 }
 
-void	pick_v_or_h(t_data *g)
+void	pick_v(t_data *g)
 {
-	if (dist(g->p.x, g->p.y, g->r.hx, g->r.hy, g->p.a) > dist(g->p.x, g->p.y, g->r.vx, g->r.vy, g->p.a))
-	{
-		g->r.rx = g->r.vx;
-		g->r.ry = g->r.vy;
-	}
+	g->r.rx = g->r.vx;
+	g->r.ry = g->r.vy;
+	g->r.dist = g->r.disv;
+	if (g->p.x > g->r.rx)
+		g->r.color = 015020255;
 	else
+		g->r.color = 000150255;
+}
+
+void	pick_h(t_data *g)
+{
+	g->r.rx = g->r.hx;
+	g->r.ry = g->r.hy;
+	g->r.dist = g->r.dish;
+	if (g->p.y > g->r.ry)
+		g->r.color = 100255000;
+	else
+		g->r.color = 800200300;
+}
+
+void	pick_v_or_h(t_data *g, int r)
+{
+	g->r.dish = dist(g->p.x, g->p.y, g->r.hx, g->r.hy, g->p.a);
+	g->r.disv = dist(g->p.x, g->p.y, g->r.vx, g->r.vy, g->p.a);
+	if (g->r.dish == g->r.disv || (g->r.dish - g->r.disv < 0.1
+			&& g->r.dish - g->r.disv > -0.1))
 	{
 		g->r.rx = g->r.hx;
 		g->r.ry = g->r.hy;
+		g->r.dist = g->r.dish;
 	}
+	else if (g->r.dish > g->r.disv)
+		pick_v(g);
+	else
+		pick_h(g);
 	mlx_pixel_put(g->mlx, g->mlx_win, g->r.rx, g->r.ry, 255);
+}
+
+void	ray_clean(t_data *g)
+{
+	g->r.whx = 0;
+	g->r.why = 0;
+	g->r.wvx = 0;
+	g->r.wvy = 0;
 }
 
 void	ray_caster(t_data *g)
 {
-	int	r;
-	float 	a;
+	int		r;
+	float	a;
 
 	r = 0;
-	a = g->p.a - 30 * DR;
-	while (r < 60)
+	a = g->p.a - (((DR / 18) * 1080) / 2);
+	if (a < 0)
+		a += 2 * PI;
+	while (r < 1080)
 	{
+		g->r.isw = 0;
+		ray_clean(g);
 		ray_casterh(g, a),
 		ray_casterv(g, a),
-		pick_v_or_h(g);
-		a += DR;
+		pick_v_or_h(g, r);
+		draw_game(g, a, g->r.dist, r);
+		win_check(g, r, a);
+		if (g->r.isw && g->r.wind < g->r.dist)
+			draw_window(g, a, g->r.wind, r);
+		a += (DR / 18);
 		if (a > 2 * PI)
 			a -= 2 * PI;
 		r++;
