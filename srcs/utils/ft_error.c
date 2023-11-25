@@ -1,22 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   librairies.h                                       :+:      :+:    :+:   */
+/*   ft_error.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fduzant <fduzant@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/07 17:19:24 by fduzant           #+#    #+#             */
-/*   Updated: 2023/11/15 13:39:58 by fduzant          ###   ########.fr       */
+/*   Created: 2023/11/07 18:45:59 by fduzant           #+#    #+#             */
+/*   Updated: 2023/11/15 15:07:45 by fduzant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBRAIRIES_H
-# define LIBRAIRIES_H
+#include "utils.h"
 
-# include <unistd.h>
-# include <stdio.h>
-# include <stdlib.h>
-# include <stdbool.h>
-# include <math.h>
-
-#endif
+int	ft_error(char *str)
+{
+	ft_putstr_fd(str, 2);
+	return (EXIT_FAILURE);
+}

@@ -6,12 +6,20 @@
 /*   By: tmalless <tmalless@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 17:17:30 by fduzant           #+#    #+#             */
-/*   Updated: 2023/11/16 09:17:33 by tmalless         ###   ########.fr       */
+/*   Updated: 2023/11/25 10:35:34 by tmalless         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef STRUCT_H
 # define STRUCT_H
+
+# include "librairies.h"
+
+typedef struct s_vector
+{
+	float		x;
+	float		y;
+}				t_vector;
 
 typedef struct s_player
 {
@@ -34,15 +42,44 @@ typedef struct s_player
 	float	a;
 	float	al;
 	float	ar;
+	t_vector	pos;
+	t_vector	dir;
+	t_vector	plane;
 }				t_player;
+
+typedef struct s_texture
+{
+	char		*path;
+	int			width;
+	int			height;
+	int			**data;
+}				t_texture;
+
+typedef struct s_xpm
+{
+	char	character;
+	int		value;
+}			t_xpm;
 
 typedef struct s_map
 {
 	char	*file;
-	char	**map;
+	char	**m;
 	int		height;
 	int		width;
-}				t_map;
+	int		**map;
+	int		x_max;
+	int		y_max;
+	int		**valide_case;
+}			t_map;
+
+typedef struct s_parsing
+{
+	int		fd;
+	char	*file_content;
+	char	**file_content_split;
+	char	**texture_path;
+}			t_parsing;
 
 typedef struct s_ray
 {
@@ -93,10 +130,22 @@ typedef struct s_data
 {
 	void		*mlx;
 	void		*mlx_win;
-	t_map		map;
+	t_map		m;
 	t_player	p;
 	t_ray		r;
 	t_win		w;
+	t_texture	*north;
+	t_texture	*south;
+	t_texture	*west;
+	t_texture	*east;
+	int			floor_color;
+	int			ceiling_color;
+	char		**map;
+	int			map_width;
+	int			map_height;
+	t_player	*player;
+	int			x;
+	bool		minimap;
 }				t_data;
 
 #endif
