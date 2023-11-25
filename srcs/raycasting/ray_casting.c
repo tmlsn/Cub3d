@@ -6,7 +6,7 @@
 /*   By: tmalless <tmalless@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 10:02:48 by tmalless          #+#    #+#             */
-/*   Updated: 2023/11/25 17:36:17 by tmalless         ###   ########.fr       */
+/*   Updated: 2023/11/25 17:37:55 by tmalless         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ void	ray_casterv(t_data *g, float ra)
 
 void	rch_from_under(float aTan, t_data *g)
 {
-	g->r.hy = (((int)g->p.y>>5)<<5) - 0.001;
+	g->r.hy = (((int)g->p.y >> 5) << 5) - 0.001;
 	g->r.hx = (g->p.y - g->r.hy) * aTan + g->p.x;
 	g->r.yo = -32;
 	g->r.xo = -g->r.yo * aTan;
@@ -79,7 +79,7 @@ void	rch_from_under(float aTan, t_data *g)
 
 void	rch_from_above(float aTan, t_data *g)
 {
-	g->r.hy = (((int)g->p.y>>5)<<5) + 32;
+	g->r.hy = (((int)g->p.y >> 5) << 5) + 32;
 	g->r.hx = (g->p.y - g->r.hy) * aTan + g->p.x;
 	g->r.yo = 32;
 	g->r.xo = -g->r.yo * aTan;
