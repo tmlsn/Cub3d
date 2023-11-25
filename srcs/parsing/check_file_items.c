@@ -6,7 +6,7 @@
 /*   By: fduzant <fduzant@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 14:16:19 by fduzant           #+#    #+#             */
-/*   Updated: 2023/11/15 14:02:56 by fduzant          ###   ########.fr       */
+/*   Updated: 2023/11/25 15:20:17 by fduzant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ char **file, int valid[6])
 
 	i = -1;
 	status = 0;
-	while (file[i++])
+	while (file[++i])
 	{
 		if (ft_strncmp(file[i], "NO ", 3) == 0)
 			status = get_texture(&texture_path[NO], file[i], &valid[NO]);

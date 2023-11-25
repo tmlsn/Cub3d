@@ -6,7 +6,7 @@
 /*   By: fduzant <fduzant@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 13:03:38 by fduzant           #+#    #+#             */
-/*   Updated: 2023/11/15 14:26:11 by fduzant          ###   ########.fr       */
+/*   Updated: 2023/11/25 16:40:53 by fduzant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,5 +33,7 @@ int	ft_line_lowercase(char *line)
 	{
 		if (ft_isupper(line[i]))
 			line[i] = ft_tolower(line[i]);
+		i++;
 	}
+	return (EXIT_SUCCESS);
 }

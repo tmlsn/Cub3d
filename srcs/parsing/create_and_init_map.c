@@ -6,7 +6,7 @@
 /*   By: fduzant <fduzant@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/14 14:47:29 by fduzant           #+#    #+#             */
-/*   Updated: 2023/11/15 15:08:51 by fduzant          ###   ########.fr       */
+/*   Updated: 2023/11/25 16:17:16 by fduzant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	create_map(t_data *data, char **file_content)
 	while (file_content[i] && file_content[i][0] == '\0')
 		i++;
 	if (i < 6)
-		return (ft_error("Error, invalid file\n"));
+		return (ft_error("Error, invalid file 3\n"));
 	map = ft_calloc(nb_line - i + 1, sizeof(char *));
 	if (!map)
 		return (ft_error(ERROR_MALLOC));
@@ -81,7 +81,7 @@ int	create_map_ints(t_data *data, int ***map_ints)
 	(*map_ints) = ft_calloc(data->map_height, sizeof(int *));
 	if (!(*map_ints))
 		return (ft_error(ERROR_MALLOC));
-		i = -1;
+	i = -1;
 	while (++i < data->map_height)
 	{
 		(*map_ints)[i] = ft_calloc(data->map_width, sizeof(int));
@@ -134,11 +134,11 @@ int	create_and_init_map(t_data *data, char **file_content)
 	if (create_map(data, file_content))
 		return (EXIT_FAILURE);
 	if (data->map[0] == NULL)
-		return (ft_error("Error, invalid file\n"));
+		return (ft_error("Error, invalid file 1\n"));
 	i = 0;
 	while (data->map[i])
 		if (data->map[i++][0] == '\0')
-			return (ft_error("Error, invalid file\n"));
+			return (ft_error("Error, invalid file 2\n"));
 	if ((ft_strlen(data->map[0]) >= 1 && data->map[1] == NULL) || \
 		(data->map[0] != NULL && data->map[1] != NULL && data->map[2] == NULL))
 		return (ft_error("Error, map is too short\n"));

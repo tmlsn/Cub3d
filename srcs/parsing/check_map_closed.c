@@ -6,7 +6,7 @@
 /*   By: fduzant <fduzant@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/14 13:39:22 by fduzant           #+#    #+#             */
-/*   Updated: 2023/11/15 13:50:14 by fduzant          ###   ########.fr       */
+/*   Updated: 2023/11/25 16:23:01 by fduzant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,15 +21,15 @@ void	get_spawn_info(t_data *data, int **map_ints)
 	int	j;
 
 	i = -1;
-	while (i++ < data->map_height)
+	while (++i < data->map_height)
 	{
 		j = -1;
 		while (++j < data->map_width)
 		{
 			if (map_ints[i][j] == SPAWN)
 			{
-				data->player->pos.x = j + 0.5;
-				data->player->pos.y = i + 0.5;
+				data->player->pos.x = (float)j + 0.5;
+				data->player->pos.y = (float)i + 0.5;
 				if (data->map[i][j] == 'N')
 					data->player->dir = (t_vector){0, -1};
 				else if (data->map[i][j] == 'S')
@@ -65,7 +65,7 @@ void	dfs(t_map *map, int x, int y)
 		dy = y + y_inc[i];
 		if (is_valid(map, dx, dy))
 			dfs(map, dx, dy);
-			i++;
+		i++;
 	}
 }
 

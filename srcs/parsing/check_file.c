@@ -6,7 +6,7 @@
 /*   By: fduzant <fduzant@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 18:25:50 by fduzant           #+#    #+#             */
-/*   Updated: 2023/11/07 18:53:49 by fduzant          ###   ########.fr       */
+/*   Updated: 2023/11/25 16:52:35 by fduzant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	check_file_extension(char *file_name, int mode)
 	const char	*ext[] = {".cub", ".xpm"};
 
 	len = ft_strlen(file_name);
-	if (len == 0 | len < 5)
+	if (len == 0 || len < 5)
 		return (ft_error("Error, file name too short\n"));
 	len -= 4;
 	if (ft_strncmp(file_name + len, ext[mode], 4) != 0)

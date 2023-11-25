@@ -6,7 +6,7 @@
 /*   By: fduzant <fduzant@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/14 14:31:40 by fduzant           #+#    #+#             */
-/*   Updated: 2023/11/14 14:44:44 by fduzant          ###   ########.fr       */
+/*   Updated: 2023/11/25 16:47:50 by fduzant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,14 +24,14 @@ int	get_direction(t_data *data, char **file_content, int dir)
 		if (get_texture_info(data->south, file_content) == EXIT_FAILURE)
 			return (EXIT_FAILURE);
 	}
-	else if (dir == WEST)
-	{
-		if (get_texture_info(data->west, file_content) == EXIT_FAILURE)
-			return (EXIT_FAILURE);
-	}
 	else if (dir == EAST)
 	{
 		if (get_texture_info(data->east, file_content) == EXIT_FAILURE)
+			return (EXIT_FAILURE);
+	}
+	else if (dir == WEST)
+	{
+		if (get_texture_info(data->west, file_content) == EXIT_FAILURE)
 			return (EXIT_FAILURE);
 	}
 	return (EXIT_SUCCESS);

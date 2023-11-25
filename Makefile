@@ -6,7 +6,7 @@
 #    By: fduzant <fduzant@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/16 17:21:31 by tmalless          #+#    #+#              #
-#    Updated: 2023/11/15 14:55:31 by fduzant          ###   ########.fr        #
+#    Updated: 2023/11/25 16:08:02 by fduzant          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,8 +36,8 @@ SRCS := $(addprefix $(SRCS_PATH), $(SRCS))
 
 OBJECT = $(SRCS:.c=.o)
 
-CFLAGS = # -Wall -Wextra -Werror
-CFLAGS += -I $(INCS_PATH)
+CFLAGS = -Wall -Wextra -Werror
+CFLAGS += -I $(INCS_PATH) -g3
 
 LIB = lib/get_next_line/gnl.a lib/libft/libft.a lib/ft_printf/libftprintf.a mlx_linux/libmlx_Linux.a #mlx_linux/libmlx.a
 

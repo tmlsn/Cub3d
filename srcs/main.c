@@ -6,7 +6,7 @@
 /*   By: fduzant <fduzant@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 13:09:26 by tmalless          #+#    #+#             */
-/*   Updated: 2023/11/15 14:49:11 by fduzant          ###   ########.fr       */
+/*   Updated: 2023/11/25 16:58:15 by fduzant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ int	main(int argc, char **argv)
 
 	ft_bzero(&data, sizeof(t_data));
 	ft_bzero(&player, sizeof(t_player));
-	ft_bzero(texture, sizeof(t_texture) * 4);
+	ft_bzero(&texture, sizeof(t_texture) * 4);
 	data.north = &texture[0];
 	data.south = &texture[1];
 	data.east = &texture[2];

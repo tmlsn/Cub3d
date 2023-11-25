@@ -6,7 +6,7 @@
 /*   By: fduzant <fduzant@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 13:39:32 by fduzant           #+#    #+#             */
-/*   Updated: 2023/11/15 13:37:48 by fduzant          ###   ########.fr       */
+/*   Updated: 2023/11/25 17:16:30 by fduzant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,15 +48,15 @@ int	remove_item_from_file_content(char ***file_content)
 	{
 		if (ft_strncmp((*file_content)[i], "NO", 2) == 0)
 			(*file_content)[i][0] = '\0';
-		else if ((*file_content)[i], "SO", 2 == 0)
+		else if (ft_strncmp((*file_content)[i], "SO", 2) == 0)
 			(*file_content)[i][0] = '\0';
-		else if ((*file_content)[i], "WE", 2 == 0)
+		else if (ft_strncmp((*file_content)[i], "WE", 2) == 0)
 			(*file_content)[i][0] = '\0';
-		else if ((*file_content)[i], "EA", 2 == 0)
+		else if (ft_strncmp((*file_content)[i], "EA", 2) == 0)
 			(*file_content)[i][0] = '\0';
-		else if ((*file_content)[i], "F", 1 == 0)
+		else if (ft_strncmp((*file_content)[i], "F", 1) == 0)
 			(*file_content)[i][0] = '\0';
-		else if ((*file_content)[i], "C", 1 == 0)
+		else if (ft_strncmp((*file_content)[i], "C", 1) == 0)
 			(*file_content)[i][0] = '\0';
 		i++;
 	}
@@ -131,14 +131,15 @@ int	parsing(t_data *data, char *file_name)
 	parsing.file_content_split = ft_split_at_endl(parsing.file_content);
 	if (!parsing.file_content_split)
 		return (destroy_parsing_struct(&parsing, true), ft_error(ERROR_MALLOC));
-	if (check_file_items(data, &parsing))
+	if (check_file_items(data, &parsing) == EXIT_FAILURE)
 		return (destroy_parsing_struct(&parsing, true), EXIT_FAILURE);
-	if (remove_item_from_file_content(&parsing.file_content_split))
+	if (remove_item_from_file_content(&parsing.file_content_split) == \
+	EXIT_FAILURE)
 		return (destroy_parsing_struct(&parsing, true), EXIT_FAILURE);
-	if (create_and_init_map(data, parsing.file_content_split))
+	if (create_and_init_map(data, parsing.file_content_split) == EXIT_FAILURE)
 		return (destroy_parsing_struct(&parsing, true), EXIT_FAILURE);
-	if (check_texture_path(data, &parsing))
+	if (check_texture_path(data, &parsing) == EXIT_FAILURE)
 		return (destroy_parsing_struct(&parsing, false), EXIT_FAILURE);
 	print_data(data, file_name);
-	return (destroy_parsing_struct(&parsing, false), EXIT_SUCCESS);
+	return (destroy_parsing_struct(&parsing, true), EXIT_SUCCESS);
 }
