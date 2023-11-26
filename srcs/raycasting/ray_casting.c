@@ -6,7 +6,7 @@
 /*   By: tmalless <tmalless@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 10:02:48 by tmalless          #+#    #+#             */
-/*   Updated: 2023/11/26 00:25:53 by tmalless         ###   ########.fr       */
+/*   Updated: 2023/11/26 10:26:00 by tmalless         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -168,7 +168,7 @@ void	pick_v_or_h(t_data *g)
 		pick_v(g);
 	else
 		pick_h(g);
-	mlx_pixel_put(g->mlx, g->mlx_win, g->r.rx, g->r.ry, 255);
+	//mlx_pixel_put(g->mlx, g->mlx_win, g->r.rx, g->r.ry, 255);
 }
 
 void	ray_clean(t_data *g)

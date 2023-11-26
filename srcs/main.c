@@ -6,7 +6,7 @@
 /*   By: tmalless <tmalless@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 13:09:26 by tmalless          #+#    #+#             */
-/*   Updated: 2023/11/26 00:44:20 by tmalless         ###   ########.fr       */
+/*   Updated: 2023/11/26 10:25:16 by tmalless         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,11 @@ int	looping(t_data *g)
 	//print_small_map(g);
 	check_mv(g);
 	ray_caster(g);
-	//draw_map(g);
+	draw_map(g);
 	//draw_p(g);
-	//draw_p_on_map(g);
+	draw_p_on_map(g);
 
-	usleep(10000);
+	//usleep(10000);
 	mlx_put_image_to_window(g->mlx, g->mlx_win, g->g_img.img, 0, 0);
 	//draw_map(g);
 	return (0);

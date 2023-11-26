@@ -6,7 +6,7 @@
 /*   By: tmalless <tmalless@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 10:25:42 by tmalless          #+#    #+#             */
-/*   Updated: 2023/11/25 19:08:52 by tmalless         ###   ########.fr       */
+/*   Updated: 2023/11/26 10:31:49 by tmalless         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	draw_sense(t_data *g)
 	i = 0;
 	while (i < 10)
 	{
-		mlx_pixel_put(g->mlx, g->mlx_win, g->p.x + cos(g->p.a) * i, g->p.y + sin(g->p.a) * i, 100255000);
+		pixel_put(g, g->p.x + cos(g->p.a) * i, g->p.y + sin(g->p.a) * i, 100255000);
 		i++;
 	}
 }
@@ -37,7 +37,7 @@ void	draw_p(t_data *g)
 	{
 		while (j < 3)
 		{
-			mlx_pixel_put(g->mlx, g->mlx_win, g->p.x + j, g->p.y + i, 100255000);
+			pixel_put(g, g->p.x + j, g->p.y + i, 100255000);
 			j++;
 		}
 		j = -2;
@@ -53,10 +53,10 @@ int	get_x(t_data *g)
 {
 	int	x;
 
-	if (g->p.x > 4 * 32 && g->p.x < g->map_width * 32 - 5 * 32)
+	if (g->p.x > 4 * 32 && g->p.x < g->map_width * 32 - 4 * 32)
 		x = 4 * 32;
-	else if (g->p.x > g->map_width * 32 - 5 * 32)
-		x = g->p.x - (g->map_width * 32 - 9 * 32);
+	else if (g->p.x > g->map_width * 32 - 4 * 32)
+		x = g->p.x - (g->map_width * 32 - 8 * 32);
 	else
 		x = g->p.x;
 	return (x);
@@ -66,10 +66,10 @@ int	get_y(t_data *g)
 {
 	int	y;
 
-	if (g->p.y > 4 * 32 && g->p.y < g->map_height * 32 - 5 * 32)
+	if (g->p.y > 4 * 32 && g->p.y < g->map_height * 32 - 4 * 32)
 		y = 4 * 32;
-	else if (g->p.y > g->map_height * 32 - 5 * 32)
-		y = g->p.y - (g->map_height * 32 - 9 * 32);
+	else if (g->p.y > g->map_height * 32 - 4 * 32)
+		y = g->p.y - (g->map_height * 32 - 8 * 32);
 	else
 		y = g->p.y;
 	return (y);
@@ -82,7 +82,7 @@ void	draw_sense_on_map(t_data *g, int x, int y)
 	i = 0;
 	while (i < 10)
 	{
-		mlx_pixel_put(g->mlx, g->mlx_win, x + cos(g->p.a) * i, y + sin(g->p.a) * i, 100255000);
+		pixel_put(g, x + cos(g->p.a) * i, y + sin(g->p.a) * i, 100255000);
 		i++;
 	}
 }
@@ -105,14 +105,11 @@ void	draw_p_on_map(t_data *g)
 	{
 		while (j < 3)
 		{
-			mlx_pixel_put(g->mlx, g->mlx_win, x + 15 + j, y + 15 + i, 255);
+			pixel_put(g, x + 15 + j, y + 15 + i, 100255000);
 			j++;
 		}
 		j = -2;
 		i++;
 	}
 	draw_sense_on_map(g, x + 15, y + 15);
-	/* check_mv(g);
-	//mlx_pixel_put(g->mlx, g->mlx_win, g->p.x + (g->p.dx * 10), g->p.y + (g->p.dy * 10), 255);
-	ray_caster(g); */
 }
