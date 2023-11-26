@@ -6,7 +6,7 @@
 /*   By: tmalless <tmalless@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 17:17:30 by fduzant           #+#    #+#             */
-/*   Updated: 2023/11/25 18:29:09 by tmalless         ###   ########.fr       */
+/*   Updated: 2023/11/26 00:38:22 by tmalless         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,12 +47,22 @@ typedef struct s_player
 	float	ar;
 }				t_player;
 
+typedef struct s_visual
+{
+	void	*img;
+	char	*addr;
+	int		bpp;
+	int		ll;
+	int		endian;
+}				t_visual;
+
 typedef struct s_texture
 {
 	char		*path;
 	int			width;
 	int			height;
 	int			**data;
+	t_visual	img;
 }				t_texture;
 
 typedef struct s_xpm
@@ -79,6 +89,7 @@ typedef struct s_parsing
 
 typedef struct s_ray
 {
+	int		height;
 	int		mx;
 	int		my;
 	float	xo;
@@ -123,14 +134,7 @@ typedef struct s_win
 }				t_win;
 
 
-/* typedef struct s_img
-{
-	void	*img;
-	int		*addr;
-	int		bpp;
-	int		ll;
-}				t_img;
- */
+
 /* typedef struct s_texture
 {
 	t_img	text;
@@ -152,6 +156,11 @@ typedef struct s_data
 	bool		minimap;
 	void		*mlx;
 	void		*mlx_win;
+	t_visual	g_img;
+	t_visual	no;
+	t_visual	so;
+	t_visual	we;
+	t_visual	ea;
 	t_map		m;
 	t_player	p;
 	t_player	*player;

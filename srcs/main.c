@@ -6,11 +6,11 @@
 /*   By: tmalless <tmalless@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 13:09:26 by tmalless          #+#    #+#             */
-/*   Updated: 2023/11/25 18:59:50 by tmalless         ###   ########.fr       */
+/*   Updated: 2023/11/26 00:44:20 by tmalless         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "../includes/cub3d.h"
 
 // int	looping(t_data *g)
 // {
@@ -22,11 +22,14 @@
 int	looping(t_data *g)
 {
 	//print_small_map(g);
-	draw_map(g);
 	check_mv(g);
-	//draw_p(g);
-	draw_p_on_map(g);
 	ray_caster(g);
+	//draw_map(g);
+	//draw_p(g);
+	//draw_p_on_map(g);
+
+	usleep(10000);
+	mlx_put_image_to_window(g->mlx, g->mlx_win, g->g_img.img, 0, 0);
 	//draw_map(g);
 	return (0);
 }
@@ -70,6 +73,32 @@ int	looping(t_data *g)
 // 	mlx_loop(g->mlx);
 // }
 
+void	init_img(t_data *g)
+{
+	/* int g_height;
+
+	g_height = 720; */
+	g->g_img.img = mlx_new_image(g->mlx, 1080, 720);
+	g->g_img.addr = mlx_get_data_addr(g->g_img.img, &g->g_img.bpp, &g->g_img.ll, &g->g_img.endian);
+}
+
+void	init_textures(t_data *g)
+{
+	int	img_size;
+
+	img_size = 64;
+	g->north->img.img = mlx_xpm_file_to_image(g->mlx, g->north->path, &img_size, &img_size);
+	if (!g->north->img.img)
+		printf("ca marche pas wallah !\n");
+	g->north->img.addr = mlx_get_data_addr(g->north->img.img, &g->north->img.bpp, &g->north->img.ll, &g->north->img.endian);
+	g->south->img.img = mlx_xpm_file_to_image(g->mlx, g->south->path, &img_size, &img_size);
+	g->south->img.addr = mlx_get_data_addr(g->south->img.img, &g->south->img.bpp, &g->south->img.ll, &g->south->img.endian);
+	g->east->img.img = mlx_xpm_file_to_image(g->mlx, g->east->path, &img_size, &img_size);
+	g->east->img.addr = mlx_get_data_addr(g->east->img.img, &g->east->img.bpp, &g->east->img.ll, &g->east->img.endian);
+	g->west->img.img = mlx_xpm_file_to_image(g->mlx, g->west->path, &img_size, &img_size);
+	g->west->img.addr = mlx_get_data_addr(g->west->img.img, &g->west->img.bpp, &g->west->img.ll, &g->west->img.endian);
+}
+
 int	main(int ac, char **av)
 {
 	t_data		*g;
@@ -85,11 +114,12 @@ int	main(int ac, char **av)
 	g->east = &texture[2];
 	g->west = &texture[3];
 	g->player = &player;
+	//int fd = open(av[1], O_RDONLY);
 	if (ac != 2)
 		return (ft_error(ERROR_ARG));
 	if (parsing(g, av[1]) == EXIT_FAILURE)
 		return (destroy_data(g), EXIT_FAILURE);
-	
+	printf("%s\n", g->north->path);
 	printf("x : %f, y : %f\n", g->player->x, g->player->y);
 	/* if (ac != 2)
 		return (0);
@@ -103,12 +133,15 @@ int	main(int ac, char **av)
 	/* g->map.height = 32 * 8;
 	g->map.width = 32 * 8; */
 	init_p(g);
+	init_textures(g);
 
 	
 	//draw_p(g);
 	//print_map(g->map.map);
-	mlx_loop_hook(g->mlx, looping, g);
+	init_img(g);
+	//usleep(10000000);
 	mlx_hook(g->mlx_win, 2, 1L << 0, key_hook, g);
+	mlx_loop_hook(g->mlx, looping, g);
 	mlx_hook(g->mlx_win, 3, 1L << 1, key_release, g);
 	mlx_loop(g->mlx);
 	destroy_data(g);

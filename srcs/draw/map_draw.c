@@ -6,7 +6,7 @@
 /*   By: tmalless <tmalless@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 10:05:31 by tmalless          #+#    #+#             */
-/*   Updated: 2023/11/25 19:04:47 by tmalless         ###   ########.fr       */
+/*   Updated: 2023/11/25 22:01:06 by tmalless         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,9 +54,11 @@ void	fill_wall(t_data *g, int i, int j)
 		while (j < l)
 		{
 			if (i % 32 == 0 || j % 32 == 0)
-				mlx_pixel_put(g->mlx, g->mlx_win, j, i, 0);
+				pixel_put(g, j, i, 0);
+				//mlx_pixel_put(g->mlx, g->mlx_win, j, i, 0);
 			else
-				mlx_pixel_put(g->mlx, g->mlx_win, j, i, 50);
+				pixel_put(g, j, i, 50);
+				//mlx_pixel_put(g->mlx, g->mlx_win, j, i, 50);
 			j++;
 		}
 		j -= 32;
@@ -78,9 +80,11 @@ void	fill_floor(t_data *g, int i, int j)
 		while (j < l)
 		{
 			if (i % 32 == 0 || j % 32 == 0)
-				mlx_pixel_put(g->mlx, g->mlx_win, j, i, 0);
+				pixel_put(g, j, i, 0);
+				//mlx_pixel_put(g->mlx, g->mlx_win, j, i, 0);
 			else
-				mlx_pixel_put(g->mlx, g->mlx_win, j, i, 90);
+				pixel_put(g, j, i, 90);
+				//mlx_pixel_put(g->mlx, g->mlx_win, j, i, 90);
 			j++;
 		}
 		j -= 32;
@@ -102,11 +106,14 @@ void	fill(t_data *g, int i, int j)
 		while (j < l)
 		{
 			if (i % 32 == 0 || j % 32 == 0)
-				mlx_pixel_put(g->mlx, g->mlx_win, j, i, 0);
+				pixel_put(g, j, i, 0);
+				//mlx_pixel_put(g->mlx, g->mlx_win, j, i, 0);
 			else if ((i % 4 == 0 && j % 4 == 0) || (i % 4 == 1 && j % 4 == 1))
-				mlx_pixel_put(g->mlx, g->mlx_win, j, i, 000150255);
+				pixel_put(g, j, i, 000150255);
+				//mlx_pixel_put(g->mlx, g->mlx_win, j, i, 000150255);
 			else
-				mlx_pixel_put(g->mlx, g->mlx_win, j, i, 90);
+				pixel_put(g, j, i, 90);
+				//mlx_pixel_put(g->mlx, g->mlx_win, j, i, 90);
 			j++;
 		}
 		j -= 32;

@@ -6,11 +6,13 @@
 /*   By: tmalless <tmalless@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/25 12:53:46 by tmalless          #+#    #+#             */
-/*   Updated: 2023/11/25 14:29:07 by tmalless         ###   ########.fr       */
+/*   Updated: 2023/11/25 22:39:45 by tmalless         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "../includes/cub3d.h"
+
+
 
 void	init_img(t_data *g)
 {

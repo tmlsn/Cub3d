@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fduzant <fduzant@student.42.fr>            +#+  +:+       +#+        */
+/*   By: tmalless <tmalless@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 13:39:32 by fduzant           #+#    #+#             */
-/*   Updated: 2023/11/25 17:16:30 by fduzant          ###   ########.fr       */
+/*   Updated: 2023/11/26 01:20:20 by tmalless         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -141,5 +141,5 @@ int	parsing(t_data *data, char *file_name)
 	if (check_texture_path(data, &parsing) == EXIT_FAILURE)
 		return (destroy_parsing_struct(&parsing, false), EXIT_FAILURE);
 	print_data(data, file_name);
-	return (destroy_parsing_struct(&parsing, true), EXIT_SUCCESS);
+	return (/* destroy_parsing_struct(&parsing, true) */EXIT_SUCCESS);
 }

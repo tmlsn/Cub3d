@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_file.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fduzant <fduzant@student.42.fr>            +#+  +:+       +#+        */
+/*   By: tmalless <tmalless@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 18:25:50 by fduzant           #+#    #+#             */
-/*   Updated: 2023/11/25 16:52:35 by fduzant          ###   ########.fr       */
+/*   Updated: 2023/11/25 22:54:18 by tmalless         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,6 @@ int	check_file(char *file_name, int *fd, int mode)
 		return (EXIT_FAILURE);
 	*fd = open(file_name, O_RDONLY);
 	if (*fd == -1)
-		return (ft_error("Error, file not readeable or file doesn't exist\n"));
+		return (ft_error("Error, file not readable or file doesn't exist\n"));
 	return (EXIT_SUCCESS);
 }

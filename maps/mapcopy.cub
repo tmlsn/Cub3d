@@ -1,10 +1,10 @@
-NO ./maps/texture/green1.xpm
-SO ./maps/texture/green2.xpm
-EA ./maps/texture/green3.xpm
-WE ./maps/texture/green4.xpm
+NO ./maps/texture/sky1.xpm
+SO ./maps/texture/sky2.xpm
+EA ./maps/texture/sky3.xpm
+WE ./maps/texture/sky4.xpm
 
-F 60,200,5
-C 125,255,55
+F 20,2,195
+C 25,55,155
 
         1111111111111111111111111
         1000000000110000000000001

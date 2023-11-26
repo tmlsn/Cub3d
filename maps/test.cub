@@ -1,13 +1,10 @@
-C 255, 20, 30
-
-NO ./textures/green1.xpm
-SO ./textures/green2.xpm
-EA ./textures/green3.xpm
-WE ./textures/green4.xpm
+NO ./maps/texture/caution_stripes_seamless.xpm
+SO ./maps/texture/caution_stripes_seamless.xpm
+EA ./maps/texture/caution_stripes_seamless.xpm
+WE ./maps/texture/caution_stripes_seamless.xpm
 
 F  0, 0, 0
-
-
+C 255, 20, 30
 
 111111111111111111111111111111
 11111111100000000000000011111

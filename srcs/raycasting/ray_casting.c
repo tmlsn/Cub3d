@@ -6,7 +6,7 @@
 /*   By: tmalless <tmalless@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 10:02:48 by tmalless          #+#    #+#             */
-/*   Updated: 2023/11/25 18:19:49 by tmalless         ###   ########.fr       */
+/*   Updated: 2023/11/26 00:25:53 by tmalless         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,10 +136,10 @@ void	pick_v(t_data *g)
 	g->r.rx = g->r.vx;
 	g->r.ry = g->r.vy;
 	g->r.dist = g->r.disv;
-	if (g->p.x > g->r.rx)
+	/* if (g->p.x > g->r.rx)
 		g->r.color = 015020255;
 	else
-		g->r.color = 000150255;
+		g->r.color = 000150255; */
 }
 
 void	pick_h(t_data *g)
@@ -147,10 +147,10 @@ void	pick_h(t_data *g)
 	g->r.rx = g->r.hx;
 	g->r.ry = g->r.hy;
 	g->r.dist = g->r.dish;
-	if (g->p.y > g->r.ry)
-		g->r.color = 100255000;
+	/* if (g->p.y > g->r.ry)
+		//g->r.color = 100255000;
 	else
-		g->r.color = 800200300;
+		g->r.color = 800200300; */
 }
 
 void	pick_v_or_h(t_data *g)

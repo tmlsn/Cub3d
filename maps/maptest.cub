@@ -1,5 +1,5 @@
 NO ./maps/texture/eagle.xpm
-SO ./maps/texture/greystone.xpm
+SO	./maps/texture/caution_stripes_seamless.xpm
 EA ./maps/texture/red.xpm
 WE ./maps/texture/purplestone.xpm
 
