@@ -6,7 +6,7 @@
 /*   By: tmalless <tmalless@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 17:47:52 by fduzant           #+#    #+#             */
-/*   Updated: 2023/11/25 22:44:38 by tmalless         ###   ########.fr       */
+/*   Updated: 2023/11/28 16:25:00 by tmalless         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,8 @@ enum		e_map
 	SPAWN
 };
 
+char	*create_line(char *line, int bigest_line);
+int		get_bigest_line(char **file_content);
 int		check_file(char *file_name, int *fd, int mode);
 int		check_map_close(t_data *data, int **map_ints);
 int		check_file_items(t_data *data, t_parsing *parsing);
@@ -58,5 +60,6 @@ int		read_file(char **file_content, int *fd);
 int		map_is_valid(t_map *map);
 char	*remove_quotes(char *str);
 int		parsing(t_data *data, char *file_name);
+void	destroy_parsing_struct(t_parsing *parsing, int texture);
 
 #endif

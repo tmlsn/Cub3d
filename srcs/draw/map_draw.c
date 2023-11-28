@@ -6,7 +6,7 @@
 /*   By: tmalless <tmalless@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 10:05:31 by tmalless          #+#    #+#             */
-/*   Updated: 2023/11/25 22:01:06 by tmalless         ###   ########.fr       */
+/*   Updated: 2023/11/28 12:21:43 by tmalless         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,28 +15,26 @@
 int	get_i(t_data *g)
 {
 	int	i;
-	
+
 	if (g->p.y / 32 < 4)
 		i = 0;
 	else if ((int)(g->p.y / 32 + 5) > g->map_height)
-		i = g->map_height - 9;
+		i = g->map_height - 8;
 	else
 		i = g->p.y / 32 - 4;
-	printf("i : %d\n", i);
 	return (i);
 }
 
 int	get_j(t_data *g)
 {
 	int	j;
-	
+
 	if (g->p.x / 32 < 4)
 		j = 0;
 	else if ((int)(g->p.x / 32 + 5) > g->map_width)
-		j = g->map_width - 9;
+		j = g->map_width - 8;
 	else
 		j = g->p.x / 32 - 4;
-	printf("j : %d\n", j);
 	return (j);
 }
 
@@ -54,11 +52,9 @@ void	fill_wall(t_data *g, int i, int j)
 		while (j < l)
 		{
 			if (i % 32 == 0 || j % 32 == 0)
-				pixel_put(g, j, i, 0);
-				//mlx_pixel_put(g->mlx, g->mlx_win, j, i, 0);
+				pixel_put(g, i, j, 0);
 			else
-				pixel_put(g, j, i, 50);
-				//mlx_pixel_put(g->mlx, g->mlx_win, j, i, 50);
+				pixel_put(g, i, j, 50);
 			j++;
 		}
 		j -= 32;
@@ -80,11 +76,9 @@ void	fill_floor(t_data *g, int i, int j)
 		while (j < l)
 		{
 			if (i % 32 == 0 || j % 32 == 0)
-				pixel_put(g, j, i, 0);
-				//mlx_pixel_put(g->mlx, g->mlx_win, j, i, 0);
+				pixel_put(g, i, j, 0);
 			else
-				pixel_put(g, j, i, 90);
-				//mlx_pixel_put(g->mlx, g->mlx_win, j, i, 90);
+				pixel_put(g, i, j, 90);
 			j++;
 		}
 		j -= 32;
@@ -106,14 +100,11 @@ void	fill(t_data *g, int i, int j)
 		while (j < l)
 		{
 			if (i % 32 == 0 || j % 32 == 0)
-				pixel_put(g, j, i, 0);
-				//mlx_pixel_put(g->mlx, g->mlx_win, j, i, 0);
+				pixel_put(g, i, j, 0);
 			else if ((i % 4 == 0 && j % 4 == 0) || (i % 4 == 1 && j % 4 == 1))
-				pixel_put(g, j, i, 000150255);
-				//mlx_pixel_put(g->mlx, g->mlx_win, j, i, 000150255);
+				pixel_put(g, i, j, 000150255);
 			else
-				pixel_put(g, j, i, 90);
-				//mlx_pixel_put(g->mlx, g->mlx_win, j, i, 90);
+				pixel_put(g, i, j, 90);
 			j++;
 		}
 		j -= 32;
@@ -132,10 +123,10 @@ void	print_small_map(t_data *g)
 	{
 		while (g->map[i][j])
 		{
-			if (g->map[i][j] == '1')
-				fill_wall(g, i, j);
-			else if (g->map[i][j] == '0')
+			if (g->map[i][j] != '1')
 				fill_floor(g, i, j);
+			else if (g->map[i][j] == '1')
+				fill_wall(g, i, j);
 			else if (g->map[i][j] == 'V')
 				fill(g, i, j);
 			j++;
@@ -143,6 +134,7 @@ void	print_small_map(t_data *g)
 		j = 0;
 		i++;
 	}
+	draw_p(g);
 }
 
 void	print_thin_map(t_data *g, int m)
@@ -158,16 +150,19 @@ void	print_thin_map(t_data *g, int m)
 	{
 		while (g->map[i][j])
 		{
-			if (g->map[i][j] == '1')
-				fill_wall(g, m, j);
-			else if (g->map[i][j] == '0')
+			if (g->map[i][j] != '1')
 				fill_floor(g, m, j);
+			else if (g->map[i][j] == '1')
+				fill_wall(g, m, j);
+			else if (g->map[i][j] == 'V')
+				fill(g, m, j);
 			j++;
 		}
 		j = 0;
 		i++;
 		m++;
 	}
+	draw_p_on_map(g, -2, -2);
 }
 
 void	print_low_map(t_data *g, int n)
@@ -183,10 +178,12 @@ void	print_low_map(t_data *g, int n)
 	{
 		while (g->map[i][j] && j < l)
 		{
+			if (g->map[i][j] != '1')
+				fill_floor(g, i, n);
 			if (g->map[i][j] == '1')
 				fill_wall(g, i, n);
-			else if (g->map[i][j] == '0')
-				fill_floor(g, i, n);
+			else if (g->map[i][j] == 'V')
+				fill(g, i, n);
 			j++;
 			n++;
 		}
@@ -194,6 +191,7 @@ void	print_low_map(t_data *g, int n)
 		n = 0;
 		i++;
 	}
+	draw_p_on_map(g, -2, -2);
 }
 
 void	print_semi_small_map(t_data *g)
@@ -204,23 +202,23 @@ void	print_semi_small_map(t_data *g)
 		print_thin_map(g, 0);
 }
 
-void	print_big_map(t_data *g, int k, int l, int m, int n)
+void	print_big_map(t_data *g, int i, int j, int m, int n)
 {
-	int	i;
-	int	j;
+	int	k;
+	int	l;
 
-	i = get_i(g);
-	j = get_j(g);
 	k = i + 8;
 	l = j + 8;
 	while (g->map[i] && i < k)
 	{
 		while (g->map[i][j] && j < l)
 		{
-			if (g->map[i][j] == '1')
-				fill_wall(g, m, n);
-			else if (g->map[i][j] == '0')
+			if (g->map[i][j] != '1')
 				fill_floor(g, m, n);
+			else if (g->map[i][j] == '1')
+				fill_wall(g, m, n);
+			else if (g->map[i][j] == 'V')
+				fill(g, m, n);
 			j++;
 			n++;
 		}
@@ -229,14 +227,15 @@ void	print_big_map(t_data *g, int k, int l, int m, int n)
 		i++;
 		m++;
 	}
+	draw_p_on_map(g, -2, -2);
 }
 
 void	draw_map(t_data *g)
 {
-	if (g->map_height < 8 && g->map_width < 8)
+	if (g->map_height < 9 && g->map_width < 9)
 		print_small_map(g);
 	else if (g->map_height < 8 && g->map_width < 8)
 		print_semi_small_map(g);
 	else
-		print_big_map(g, 0, 0, 0, 0);
+		print_big_map(g, get_i(g), get_j(g), 0, 0);
 }

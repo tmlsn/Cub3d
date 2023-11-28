@@ -6,7 +6,7 @@
 /*   By: tmalless <tmalless@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 10:23:04 by tmalless          #+#    #+#             */
-/*   Updated: 2023/11/14 19:24:17 by tmalless         ###   ########.fr       */
+/*   Updated: 2023/11/28 18:07:01 by tmalless         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,4 @@ void	look_l(t_data *g)
 		g->p.al += 2 * PI;
 	if (g->p.ar < 0)
 		g->p.ar += 2 * PI;
-	/* g->p.dx = cos(g->p.a) * g->p.speed;
-	g->p.dy = sin(g->p.a) * g->p.speed; */
 }

@@ -6,7 +6,7 @@
 /*   By: tmalless <tmalless@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 13:09:26 by tmalless          #+#    #+#             */
-/*   Updated: 2023/11/26 10:25:16 by tmalless         ###   ########.fr       */
+/*   Updated: 2023/11/28 18:59:53 by tmalless         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	looping(t_data *g)
 	ray_caster(g);
 	draw_map(g);
 	//draw_p(g);
-	draw_p_on_map(g);
+	
 
 	//usleep(10000);
 	mlx_put_image_to_window(g->mlx, g->mlx_win, g->g_img.img, 0, 0);
@@ -73,6 +73,19 @@ int	looping(t_data *g)
 // 	mlx_loop(g->mlx);
 // }
 
+char	*get_gname(char *av)
+{
+	char	*tmp;
+
+	av = ft_strrchr(av, '/') + 1;
+	tmp = ft_strchr(av, '.');
+	tmp[0] = '\0';
+	printf("%s\n", av);
+	if (!av)
+		return ("X");
+	return (av);
+}
+
 void	init_img(t_data *g)
 {
 	/* int g_height;
@@ -103,7 +116,8 @@ int	main(int ac, char **av)
 {
 	t_data		*g;
 	t_player	player;
-	t_texture	texture[4]; 
+	t_texture	texture[4];
+	// char	*g_name;
 
 	g = ft_calloc(sizeof(t_data), 1);
 	ft_bzero(g, sizeof(t_data));
@@ -119,15 +133,14 @@ int	main(int ac, char **av)
 		return (ft_error(ERROR_ARG));
 	if (parsing(g, av[1]) == EXIT_FAILURE)
 		return (destroy_data(g), EXIT_FAILURE);
-	printf("%s\n", g->north->path);
-	printf("x : %f, y : %f\n", g->player->x, g->player->y);
+	// g_name = get_gname(av[1]);
 	/* if (ac != 2)
 		return (0);
 	init_map(g, av[1]); */
 	g->mlx = mlx_init();
 	if (!g->mlx)
 		return (printf("zebi\n"));
-	g->mlx_win = mlx_new_window(g->mlx, 1080, 720, "zeubi");
+	g->mlx_win = mlx_new_window(g->mlx, 1080, 720, "g_name");
 	
 	// g->mlx_win = mlx_new_window(g->mlx, 32 * g->map.width, 32 * g->map.height, "zeubi");
 	/* g->map.height = 32 * 8;
@@ -140,9 +153,10 @@ int	main(int ac, char **av)
 	//print_map(g->map.map);
 	init_img(g);
 	//usleep(10000000);
-	mlx_hook(g->mlx_win, 2, 1L << 0, key_hook, g);
 	mlx_loop_hook(g->mlx, looping, g);
+	mlx_hook(g->mlx_win, 2, 1L << 0, key_hook, g);
 	mlx_hook(g->mlx_win, 3, 1L << 1, key_release, g);
+	mlx_hook(g->mlx_win, 17, 0L, exit_game, g);
 	mlx_loop(g->mlx);
 	destroy_data(g);
 	return (EXIT_SUCCESS);

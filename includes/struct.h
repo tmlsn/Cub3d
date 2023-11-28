@@ -6,7 +6,7 @@
 /*   By: tmalless <tmalless@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 17:17:30 by fduzant           #+#    #+#             */
-/*   Updated: 2023/11/26 00:38:22 by tmalless         ###   ########.fr       */
+/*   Updated: 2023/11/28 19:21:08 by tmalless         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ typedef struct s_player
 	int		lookr;
 	int		speed;
 	int		winbrk;
+	char	start;
 	float	a;
 	float	al;
 	float	ar;
@@ -157,13 +158,14 @@ typedef struct s_data
 	void		*mlx;
 	void		*mlx_win;
 	t_visual	g_img;
-	t_visual	no;
+/* 	t_visual	no;
 	t_visual	so;
 	t_visual	we;
-	t_visual	ea;
+	t_visual	ea; */
 	t_map		m;
 	t_player	p;
 	t_player	*player;
+	t_parsing	*parsing;
 	t_ray		r;
 	t_win		w;
 }				t_data;

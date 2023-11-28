@@ -6,7 +6,7 @@
 /*   By: tmalless <tmalless@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 13:10:34 by tmalless          #+#    #+#             */
-/*   Updated: 2023/11/25 18:03:27 by tmalless         ###   ########.fr       */
+/*   Updated: 2023/11/28 16:31:39 by tmalless         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void	print_small_map(t_data *g);
 // PLAYER
 void	init_p(t_data *g);
 void	draw_p(t_data *g);
-void	draw_p_on_map(t_data *g);
+void	draw_p_on_map(t_data *g, int i, int j);
 
 // HOOKS
 int		key_hook(int keycode, t_data *g);
@@ -63,6 +63,6 @@ void	look_l(t_data *g);
 int		wall_check(float a, t_data *g);
 
 // EXIT
-int		exit_game(int err);
+int		exit_game(t_data *g);
 
 #endif

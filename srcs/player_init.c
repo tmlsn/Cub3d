@@ -6,22 +6,26 @@
 /*   By: tmalless <tmalless@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 10:25:35 by tmalless          #+#    #+#             */
-/*   Updated: 2023/11/25 18:48:52 by tmalless         ###   ########.fr       */
+/*   Updated: 2023/11/28 18:04:02 by tmalless         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
-void init_p(t_data *g)
+void	init_p(t_data *g)
 {
-	g->p.a = PI;
+	if (g->player->start == 'N')
+		g->p.a = P3;
+	else if (g->player->start == 'S')
+		g->p.a = P2;
+	else if (g->player->start == 'W')
+		g->p.a = PI;
+	else if (g->player->start == 'E')
+		g->p.a = 0;
 	g->p.al = g->p.a - 2 * SIDE;
 	g->p.ar = g->p.a + 2 * SIDE;
-	g->p.x = g->player->pos.x * 32 + 15;
-	g->p.y = g->player->pos.y * 32 + 15;
-	//g->map[(int)g->player->pos.x][(int)g->player->pos.y] = '0';
-	/* g->p.dx = cos(g->p.a) * 2;
-	g->p.dy = sin(g->p.a) * 2; */
+	g->p.x = g->player->pos.x * 32;
+	g->p.y = g->player->pos.y * 32;
 	g->p.gob = 0;
 	g->p.gof = 0;
 	g->p.gor = 0;

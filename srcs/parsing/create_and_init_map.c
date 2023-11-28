@@ -6,13 +6,13 @@
 /*   By: tmalless <tmalless@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/14 14:47:29 by fduzant           #+#    #+#             */
-/*   Updated: 2023/11/25 18:52:24 by tmalless         ###   ########.fr       */
+/*   Updated: 2023/11/28 11:57:09 by tmalless         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int	create_map(t_data *data, char **file_content)
+int	create_map(t_data *data, char **file_content, int bigest)
 {
 	const int	nb_line = ft_count_nb_line(file_content);
 	char		**map;
@@ -20,6 +20,7 @@ int	create_map(t_data *data, char **file_content)
 	int			j;
 
 	i = 0;
+	printf("bigest : %d \n", bigest);
 	while (file_content[i] && file_content[i][0] == '\0')
 		i++;
 	if (i < 6)
@@ -30,7 +31,7 @@ int	create_map(t_data *data, char **file_content)
 	j = 0;
 	while (file_content[i])
 	{
-		map[j] = ft_strdup(file_content[i]);
+		map[j] = create_line(file_content[i], bigest);
 		if (!map[j])
 			return (ft_free_tabn(map, j), ft_error(ERROR_MALLOC));
 		i++;
@@ -131,7 +132,7 @@ int	create_and_init_map(t_data *data, char **file_content)
 	int	i;
 
 	map_ints = NULL;
-	if (create_map(data, file_content))
+	if (create_map(data, file_content, get_bigest_line(file_content)))
 		return (EXIT_FAILURE);
 	if (data->map[0] == NULL)
 		return (ft_error("Error, invalid file 1\n"));

@@ -6,7 +6,7 @@
 /*   By: tmalless <tmalless@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 19:04:50 by tmalless          #+#    #+#             */
-/*   Updated: 2023/11/16 09:17:47 by tmalless         ###   ########.fr       */
+/*   Updated: 2023/11/28 12:23:07 by tmalless         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,31 +43,17 @@ void	mv_r(t_data *g)
 void	check_mv(t_data *g)
 {
 	if (g->p.lookl)
-	{
 		look_l(g);
-	}
 	if (g->p.lookr)
-	{
 		look_r(g);
-	}
 	if (g->p.gof && !wall_check(g->p.a, g))
-	{
 		mv_fwd(g);
-	}
 	if (g->p.gob && !wall_check(g->p.a - PI, g))
-	{
 		mv_bwd(g);
-	}
 	if (g->p.gol && !wall_check(g->p.al, g))
-	{
 		mv_l(g);
-	}
 	if (g->p.gor && !wall_check(g->p.ar, g))
-	{
 		mv_r(g);
-	}
 	if (g->p.winbrk)
-	{
 		break_window(g);
-	}
 }

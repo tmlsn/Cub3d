@@ -6,7 +6,7 @@
 /*   By: tmalless <tmalless@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 13:39:32 by fduzant           #+#    #+#             */
-/*   Updated: 2023/11/26 01:20:20 by tmalless         ###   ########.fr       */
+/*   Updated: 2023/11/28 19:31:43 by tmalless         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,7 +119,6 @@ int	parsing(t_data *data, char *file_name)
 {
 	t_parsing	parsing;
 
-	(void)data;
 	ft_bzero(&parsing, sizeof(t_parsing));
 	parsing.fd = -1;
 	if (check_file(file_name, &parsing.fd, CUB))
@@ -141,5 +140,6 @@ int	parsing(t_data *data, char *file_name)
 	if (check_texture_path(data, &parsing) == EXIT_FAILURE)
 		return (destroy_parsing_struct(&parsing, false), EXIT_FAILURE);
 	print_data(data, file_name);
-	return (/* destroy_parsing_struct(&parsing, true) */EXIT_SUCCESS);
+	data->parsing = &parsing;
+	return (destroy_parsing_struct(&parsing, false), EXIT_SUCCESS);
 }

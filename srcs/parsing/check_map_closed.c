@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_map_closed.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fduzant <fduzant@student.42.fr>            +#+  +:+       +#+        */
+/*   By: tmalless <tmalless@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/14 13:39:22 by fduzant           #+#    #+#             */
-/*   Updated: 2023/11/25 16:23:01 by fduzant          ###   ########.fr       */
+/*   Updated: 2023/11/26 11:20:00 by tmalless         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,13 +31,17 @@ void	get_spawn_info(t_data *data, int **map_ints)
 				data->player->pos.x = (float)j + 0.5;
 				data->player->pos.y = (float)i + 0.5;
 				if (data->map[i][j] == 'N')
-					data->player->dir = (t_vector){0, -1};
+					data->player->start = 'N';
+					//data->player->dir = (t_vector){0, -1};
 				else if (data->map[i][j] == 'S')
-					data->player->dir = (t_vector){0, 1};
+					data->player->start = 'S';
+					//data->player->dir = (t_vector){0, 1};
 				else if (data->map[i][j] == 'E')
-					data->player->dir = (t_vector){1, 0};
+					data->player->start = 'E';
+					//data->player->dir = (t_vector){1, 0};
 				else if (data->map[i][j] == 'W')
-					data->player->dir = (t_vector){-1, 0};
+					data->player->start = 'W';
+					//data->player->dir = (t_vector){-1, 0};
 			}
 		}
 	}
