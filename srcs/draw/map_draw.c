@@ -6,7 +6,7 @@
 /*   By: tmalless <tmalless@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 10:05:31 by tmalless          #+#    #+#             */
-/*   Updated: 2023/11/30 13:32:01 by tmalless         ###   ########.fr       */
+/*   Updated: 2023/11/30 17:50:51 by tmalless         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,9 +104,6 @@ void	fill_w(t_data *g, int i, int j, char c)
 	int	k;
 	int	l;
 
-	printf("c : %c\n", c);
-	print_map(g->map);
-
 	j *= 32;
 	i *= 32;
 	k = i + 32;
@@ -117,35 +114,9 @@ void	fill_w(t_data *g, int i, int j, char c)
 		{
 			if (i % 32 == 0 || j % 32 == 0)
 				pixel_put(g, i, j, 0);
-			else if (i % 4 == 0 && j % 4 == 0 && c == 'X')
-				pixel_put(g, i, j, 100255000);
+			else if (i % 4 == 0 && j % 4 == 0 && c == 'K')
+				pixel_put(g, i, j, 195255825);
 			else if (i % 4 == 0 && j % 4 == 0 && c == 'V')
-				pixel_put(g, i, j, 000150255);
-			else
-				pixel_put(g, i, j, 90);
-			j++;
-		}
-		j -= 32;
-		i++;
-	}
-}
-
-void	fill(t_data *g, int i, int j)
-{
-	int	k;
-	int	l;
-
-	j *= 32;
-	i *= 32;
-	k = i + 32;
-	l = j + 32;
-	while (i < k)
-	{
-		while (j < l)
-		{
-			if (i % 32 == 0 || j % 32 == 0)
-				pixel_put(g, i, j, 0);
-			else if ((i % 4 == 0 && j % 4 == 0) || (i % 4 == 1 && j % 4 == 1))
 				pixel_put(g, i, j, 000150255);
 			else
 				pixel_put(g, i, j, 90);
@@ -167,11 +138,11 @@ void	print_small_map(t_data *g)
 	{
 		while (g->map[i][j])
 		{
-			if (g->map[i][j] != '1' && g->map[i][j] != 'V')
+			if (!ft_strchr("1KV", g->map[i][j]))
 				fill_floor(g, i, j);
 			else if (g->map[i][j] == '1')
 				fill_wall(g, i, j);
-			else if (g->map[i][j] == 'V' || g->map[i][j] == 'X')
+			else if (g->map[i][j] == 'V' || g->map[i][j] == 'K')
 				fill_w(g, i, j, g->map[i][j]);
 			j++;
 		}
@@ -194,11 +165,11 @@ void	print_thin_map(t_data *g, int m)
 	{
 		while (g->map[i][j])
 		{
-			if (g->map[i][j] != '1' && g->map[i][j] != 'V')
+			if (!ft_strchr("1KV", g->map[i][j]))
 				fill_floor(g, m, j);
 			else if (g->map[i][j] == '1')
 				fill_wall(g, m, j);
-			else if (g->map[i][j] == 'V' || g->map[i][j] == 'X')
+			else if (g->map[i][j] == 'V' || g->map[i][j] == 'K')
 				fill_w(g, m, j, g->map[i][j]);
 			j++;
 		}
@@ -222,11 +193,11 @@ void	print_low_map(t_data *g, int n)
 	{
 		while (g->map[i][j] && j < l)
 		{
-			if (g->map[i][j] != '1' && g->map[i][j] != 'V')
+			if (!ft_strchr("1KV", g->map[i][j]))
 				fill_floor(g, i, n);
 			if (g->map[i][j] == '1')
 				fill_wall(g, i, n);
-			else if (g->map[i][j] == 'V' || g->map[i][j] == 'X')
+			else if (g->map[i][j] == 'V' || g->map[i][j] == 'K')
 				fill_w(g, i, n, g->map[i][j]);
 			j++;
 			n++;
@@ -240,9 +211,9 @@ void	print_low_map(t_data *g, int n)
 
 void	print_semi_small_map(t_data *g)
 {
-	if (g->map_height < 8)
+	if (g->map_height < 9)
 		print_low_map(g, 0);
-	else if (g->map_width < 8)
+	else if (g->map_width < 9)
 		print_thin_map(g, 0);
 }
 
@@ -257,11 +228,11 @@ void	print_big_map(t_data *g, int i, int j, int m, int n)
 	{
 		while (g->map[i][j] && j < l)
 		{
-			if (g->map[i][j] != '1' && g->map[i][j] != 'V')
+			if (!ft_strchr("1KV", g->map[i][j]))
 				fill_floor(g, m, n);
 			else if (g->map[i][j] == '1')
 				fill_wall(g, m, n);
-			else if (g->map[i][j] == 'V' || g->map[i][j] == 'X')
+			else if (g->map[i][j] == 'V' || g->map[i][j] == 'K')
 				fill_w(g, m, n, g->map[i][j]);
 			j++;
 			n++;

@@ -6,7 +6,7 @@
 /*   By: tmalless <tmalless@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 16:39:01 by tmalless          #+#    #+#             */
-/*   Updated: 2023/11/30 13:26:42 by tmalless         ###   ########.fr       */
+/*   Updated: 2023/11/30 17:29:38 by tmalless         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@ void	break_window(t_data *g)
 	if (g->map[(int)(g->p.y + g->p.dy * 15) / 32]
 		[(int)(g->p.x + g->p.dx * 15) / 32] == 'V')
 		g->map[(int)(g->p.y + g->p.dy * 15) / 32]
-		[(int)(g->p.x + g->p.dx * 15) / 32] = 'X';
+		[(int)(g->p.x + g->p.dx * 15) / 32] = 'K';
 	else if (g->map[(int)(g->p.y + g->p.dy * 15) / 32]
-		[(int)(g->p.x + g->p.dx * 15) / 32] == 'X')
+		[(int)(g->p.x + g->p.dx * 15) / 32] == 'K')
 		g->map[(int)(g->p.y + g->p.dy * 15) / 32]
 		[(int)(g->p.x + g->p.dx * 15) / 32] = 'V';
 	//print_map(g->map);
