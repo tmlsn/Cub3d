@@ -6,7 +6,7 @@
 /*   By: tmalless <tmalless@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/14 14:47:29 by fduzant           #+#    #+#             */
-/*   Updated: 2023/11/28 11:57:09 by tmalless         ###   ########.fr       */
+/*   Updated: 2023/11/30 11:34:56 by tmalless         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,7 +105,7 @@ int	init_map_ints(t_data *data, int **map_ints)
 		{
 			if (data->map[y][x] == ' ')
 				map_ints[y][x] = EMPTY;
-			else if (data->map[y][x] == '1')
+			else if (data->map[y][x] == '1' || data->map[y][x] == 'V')
 				map_ints[y][x] = WALL;
 			else if (data->map[y][x] == '0')
 				map_ints[y][x] = SPACE;

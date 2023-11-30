@@ -6,7 +6,7 @@
 /*   By: tmalless <tmalless@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 10:08:09 by tmalless          #+#    #+#             */
-/*   Updated: 2023/11/28 18:42:33 by tmalless         ###   ########.fr       */
+/*   Updated: 2023/11/30 12:53:49 by tmalless         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,8 @@ int	key_release(int keycode, t_data *g)
 		g->p.gol = 0;
 	if (keycode == 65505 || keycode == 65506)
 		g->p.speed = 2;
-	if (keycode == 32)
-		g->p.winbrk = 0;
+	/* if (keycode == 32)
+		g->p.winbrk = 0; */
 	return (0);
 }
 
@@ -50,7 +50,7 @@ int	key_hook(int keycode, t_data *g)
 	if (keycode == 65505 || keycode == 65506)
 		g->p.speed = 6;
 	if (keycode == 32)
-		g->p.winbrk = 1;
+		break_window(g);
 	if (keycode == 65307)
 		return (exit_game(g));
 	return (0);

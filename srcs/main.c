@@ -6,7 +6,7 @@
 /*   By: tmalless <tmalless@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 13:09:26 by tmalless          #+#    #+#             */
-/*   Updated: 2023/11/28 18:59:53 by tmalless         ###   ########.fr       */
+/*   Updated: 2023/11/30 11:31:25 by tmalless         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,18 @@
 // 	draw_p(g);
 // 	ray_caster(g);
 // }
+void	frame_rate(t_data *g)
+{
+	if (difftime(time(NULL), g->time) == 1)
+	{
+		printf("%d FPS\n", (int)(g->frame - g->ref_frame));
+		g->ref_frame = g->frame;
+		g->time = time(NULL);
+	}
+	/* printf("hehe : %f\n", difftime(g->time, time(NULL)));
+	printf("hehe : %d\n", (int)difftime(g->time, time(NULL))); */
+}
+
 int	looping(t_data *g)
 {
 	//print_small_map(g);
@@ -30,6 +42,8 @@ int	looping(t_data *g)
 
 	//usleep(10000);
 	mlx_put_image_to_window(g->mlx, g->mlx_win, g->g_img.img, 0, 0);
+	g->frame++;
+	frame_rate(g);
 	//draw_map(g);
 	return (0);
 }
@@ -93,6 +107,12 @@ void	init_img(t_data *g)
 	g_height = 720; */
 	g->g_img.img = mlx_new_image(g->mlx, 1080, 720);
 	g->g_img.addr = mlx_get_data_addr(g->g_img.img, &g->g_img.bpp, &g->g_img.ll, &g->g_img.endian);
+	if (g->map_height > g->map_width)
+		g->r.dof_max = g->map_height;
+	else
+		g->r.dof_max = g->map_width;
+	g->frame = 0;
+	g->time = time(NULL);
 }
 
 void	init_textures(t_data *g)

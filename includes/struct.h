@@ -6,7 +6,7 @@
 /*   By: tmalless <tmalless@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 17:17:30 by fduzant           #+#    #+#             */
-/*   Updated: 2023/11/28 19:21:08 by tmalless         ###   ########.fr       */
+/*   Updated: 2023/11/30 10:28:20 by tmalless         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,26 +26,26 @@ typedef struct s_player
 	t_vector	pos;
 	t_vector	dir;
 	t_vector	plane;
-	double	x;
-	double	y;
-	double	dx;
-	double	dy;
-	int		up;
-	int		down;
-	int		left;
-	int		right;
-	int		gof;
-	int		gob;
-	int		gor;
-	int		gol;
-	int		lookl;
-	int		lookr;
-	int		speed;
-	int		winbrk;
-	char	start;
-	float	a;
-	float	al;
-	float	ar;
+	double		x;
+	double		y;
+	double		dx;
+	double		dy;
+	int			up;
+	int			down;
+	int			left;
+	int			right;
+	int			gof;
+	int			gob;
+	int			gor;
+	int			gol;
+	int			lookl;
+	int			lookr;
+	int			speed;
+	int			winbrk;
+	char		start;
+	float		a;
+	float		al;
+	float		ar;
 }				t_player;
 
 typedef struct s_visual
@@ -118,6 +118,7 @@ typedef struct s_ray
 	int		color;
 	int		r_n;
 	int		r;
+	int		dof_max;
 }				t_ray;
 
 typedef struct s_win
@@ -158,16 +159,15 @@ typedef struct s_data
 	void		*mlx;
 	void		*mlx_win;
 	t_visual	g_img;
-/* 	t_visual	no;
-	t_visual	so;
-	t_visual	we;
-	t_visual	ea; */
 	t_map		m;
 	t_player	p;
 	t_player	*player;
 	t_parsing	*parsing;
 	t_ray		r;
 	t_win		w;
+	double			frame;
+	double			ref_frame;
+	time_t		time;
 }				t_data;
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: tmalless <tmalless@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 15:47:17 by tmalless          #+#    #+#             */
-/*   Updated: 2023/11/28 18:04:35 by tmalless         ###   ########.fr       */
+/*   Updated: 2023/11/30 11:45:08 by tmalless         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,12 +32,12 @@ void	winv_from_uad(t_data *g)
 {
 	g->r.wvx = g->p.x;
 	g->r.wvy = g->p.y;
-	g->r.dof = g->map_height;
+	g->r.dof = g->r.dof_max;
 }
 
 void	find_winv(t_data *g)
 {
-	while (g->r.dof < g->map_height)
+	while (g->r.dof < g->r.dof_max)
 	{
 		g->r.mx = (int)(g->r.wvx) >> 5;
 		g->r.my = (int)(g->r.wvy) >> 5;
@@ -46,7 +46,7 @@ void	find_winv(t_data *g)
 			&& g->map[g->r.my][g->r.mx] && g->map[g->r.my][g->r.mx] == 'V')
 		{
 			g->r.isw = 1;
-			g->r.dof = g->map_height;
+			g->r.dof = g->r.dof_max;
 		}
 		else
 		{

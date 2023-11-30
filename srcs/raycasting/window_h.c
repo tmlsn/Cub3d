@@ -6,7 +6,7 @@
 /*   By: tmalless <tmalless@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 15:46:55 by tmalless          #+#    #+#             */
-/*   Updated: 2023/11/28 18:04:45 by tmalless         ###   ########.fr       */
+/*   Updated: 2023/11/30 11:45:37 by tmalless         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,12 +32,12 @@ void	winh_from_side(t_data *g)
 {
 	g->r.whx = g->p.x;
 	g->r.why = g->p.y;
-	g->r.dof = g->map_width;
+	g->r.dof = g->r.dof_max;
 }
 
 void	find_winh(t_data *g)
 {
-	while (g->r.dof < g->map_width)
+	while (g->r.dof < g->r.dof_max)
 	{
 		g->r.mx = (int)(g->r.whx) >> 5;
 		g->r.my = (int)(g->r.why) >> 5;
@@ -46,7 +46,7 @@ void	find_winh(t_data *g)
 			&& g->map[g->r.my][g->r.mx] == 'V')
 		{
 			g->r.isw = 1;
-			g->r.dof = g->map_width;
+			g->r.dof = g->r.dof_max;
 		}
 		else
 		{

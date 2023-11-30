@@ -6,7 +6,7 @@
 /*   By: tmalless <tmalless@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 18:11:40 by tmalless          #+#    #+#             */
-/*   Updated: 2023/11/28 18:12:05 by tmalless         ###   ########.fr       */
+/*   Updated: 2023/11/30 11:55:59 by tmalless         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,11 +30,11 @@ void	draw_window(t_data *g, float ra, float dist, int r)
 	j = offset;
 	while (j < height + offset)
 	{
-		if ((j >= offset && j < offset + 10)
-			|| (j >= offset + height - 10 && j < offset + height))
-			pixel_put(g, r, j, 0);
+		if ((j >= offset && j < offset + (height * 0.05))
+			|| (j >= offset + height - (height * 0.05) && j < offset + height))
+			pixel_put(g, j, r, 0);
 		else if (j % 2 == 0 && r % 2 == 0)
-			pixel_put(g, r, j, 000150255);
+			pixel_put(g, j, r, 000150255);
 		j++;
 	}
 }

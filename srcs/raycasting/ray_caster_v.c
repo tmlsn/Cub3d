@@ -6,7 +6,7 @@
 /*   By: tmalless <tmalless@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 15:32:09 by tmalless          #+#    #+#             */
-/*   Updated: 2023/11/28 18:05:41 by tmalless         ###   ########.fr       */
+/*   Updated: 2023/11/30 09:37:48 by tmalless         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,12 +32,12 @@ void	rcv_from_uad(t_data *g)
 {
 	g->r.vx = g->p.x;
 	g->r.vy = g->p.y;
-	g->r.dof = g->map_height;
+	g->r.dof = g->map_width;
 }
 
 void	find_rcv(t_data *g)
 {
-	while (g->r.dof < g->map_height)
+	while (g->r.dof < g->map_width)
 	{
 		g->r.mx = (int)(g->r.vx) >> 5;
 		g->r.my = (int)(g->r.vy) >> 5;
@@ -45,7 +45,7 @@ void	find_rcv(t_data *g)
 			&& g->r.mx < g->map_width && g->r.my < g->map_height
 			&& g->map[g->r.my][g->r.mx] && g->map[g->r.my][g->r.mx] == '1')
 		{
-			g->r.dof = g->map_height;
+			g->r.dof = g->map_width;
 		}
 		else
 		{

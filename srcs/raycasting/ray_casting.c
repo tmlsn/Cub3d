@@ -6,7 +6,7 @@
 /*   By: tmalless <tmalless@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 10:02:48 by tmalless          #+#    #+#             */
-/*   Updated: 2023/11/28 18:18:26 by tmalless         ###   ########.fr       */
+/*   Updated: 2023/11/30 09:32:43 by tmalless         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,9 @@ void	ray_clean(t_data *g)
 	g->r.why = 0;
 	g->r.wvx = 0;
 	g->r.wvy = 0;
+	g->r.dist = 0;//9999999827968;
+	g->r.dish = 0;
+	g->r.disv = 0;
 }
 
 void	ray_caster(t_data *g)

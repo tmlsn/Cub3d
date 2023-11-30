@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   librairies.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fduzant <fduzant@student.42.fr>            +#+  +:+       +#+        */
+/*   By: tmalless <tmalless@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 17:19:24 by fduzant           #+#    #+#             */
-/*   Updated: 2023/11/15 13:39:58 by fduzant          ###   ########.fr       */
+/*   Updated: 2023/11/30 10:23:04 by tmalless         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,5 +18,7 @@
 # include <stdlib.h>
 # include <stdbool.h>
 # include <math.h>
+//A ENLEVER OU COMMENTER
+# include <time.h>
 
 #endif
