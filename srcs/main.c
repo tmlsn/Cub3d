@@ -6,7 +6,7 @@
 /*   By: tmalless <tmalless@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 13:09:26 by tmalless          #+#    #+#             */
-/*   Updated: 2023/12/04 19:53:28 by tmalless         ###   ########.fr       */
+/*   Updated: 2023/12/04 22:18:49 by tmalless         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,9 @@ int	main(int ac, char **av)
 	g->west = &texture[3];
 	g->player = &player;
 	if (ac != 2)
-		return (ft_error(ERROR_ARG));
+		return (free(g), ft_error(ERROR_ARG));
 	if (parsing(g, av[1]) == EXIT_FAILURE)
-		return (destroy_data(g), EXIT_FAILURE);
+		return (destroy_data(g), free(g), EXIT_FAILURE);
 	g_name = get_gname(av[1]);
 	g->mlx = mlx_init();
 	if (!g->mlx)

@@ -6,7 +6,7 @@
 /*   By: tmalless <tmalless@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 09:50:02 by tmalless          #+#    #+#             */
-/*   Updated: 2023/12/04 19:54:43 by tmalless         ###   ########.fr       */
+/*   Updated: 2023/12/04 22:12:00 by tmalless         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,15 +31,15 @@ void	destroy_imgs(t_data *g)
 {
 	if (g->north->img.img)
 		mlx_destroy_image(g->mlx, g->north->img.img);
-	if (g->north->img.img)
+	if (g->south->img.img)
 		mlx_destroy_image(g->mlx, g->south->img.img);
-	if (g->north->img.img)
+	if (g->east->img.img)
 		mlx_destroy_image(g->mlx, g->east->img.img);
-	if (g->north->img.img)
+	if (g->west->img.img)
 		mlx_destroy_image(g->mlx, g->west->img.img);
-	if (g->north->img.img)
+	if (g->g_img.img)
 		mlx_destroy_image(g->mlx, g->g_img.img);
-	if (g->north->img.img)
+	if (g->mlx)
 		mlx_destroy_display(g->mlx);
 }
 

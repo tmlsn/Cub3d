@@ -6,7 +6,7 @@
 /*   By: tmalless <tmalless@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 13:39:32 by fduzant           #+#    #+#             */
-/*   Updated: 2023/11/28 19:31:43 by tmalless         ###   ########.fr       */
+/*   Updated: 2023/12/04 22:15:30 by tmalless         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -138,7 +138,7 @@ int	parsing(t_data *data, char *file_name)
 	if (create_and_init_map(data, parsing.file_content_split) == EXIT_FAILURE)
 		return (destroy_parsing_struct(&parsing, true), EXIT_FAILURE);
 	if (check_texture_path(data, &parsing) == EXIT_FAILURE)
-		return (destroy_parsing_struct(&parsing, false), EXIT_FAILURE);
+		return (destroy_parsing_struct(&parsing, true), EXIT_FAILURE);
 	print_data(data, file_name);
 	data->parsing = &parsing;
 	return (destroy_parsing_struct(&parsing, false), EXIT_SUCCESS);
