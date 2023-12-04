@@ -1,7 +1,7 @@
-NO ./maps/texture/green1.xpm
-SO ./maps/texture/green2.xpm
-EA ./maps/texture/green3.xpm
-WE ./maps/texture/green4.xpm
+NO ./maps/texture/eagle.xpm
+SO ./maps/texture/caution_stripes_seamless.xpm
+EA ./maps/texture/red.xpm
+WE ./maps/texture/purplestone.xpm
 
 F 60,200,5
 C 125,255,55

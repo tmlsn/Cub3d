@@ -6,7 +6,7 @@
 /*   By: tmalless <tmalless@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 09:50:02 by tmalless          #+#    #+#             */
-/*   Updated: 2023/11/28 19:35:36 by tmalless         ###   ########.fr       */
+/*   Updated: 2023/12/04 19:54:43 by tmalless         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,12 +29,18 @@ int	clear_map(char **map)
 
 void	destroy_imgs(t_data *g)
 {
-	mlx_destroy_image(g->mlx, g->north->img.img);
-	mlx_destroy_image(g->mlx, g->south->img.img);
-	mlx_destroy_image(g->mlx, g->east->img.img);
-	mlx_destroy_image(g->mlx, g->west->img.img);
-	mlx_destroy_image(g->mlx, g->g_img.img);
-	mlx_destroy_display(g->mlx);
+	if (g->north->img.img)
+		mlx_destroy_image(g->mlx, g->north->img.img);
+	if (g->north->img.img)
+		mlx_destroy_image(g->mlx, g->south->img.img);
+	if (g->north->img.img)
+		mlx_destroy_image(g->mlx, g->east->img.img);
+	if (g->north->img.img)
+		mlx_destroy_image(g->mlx, g->west->img.img);
+	if (g->north->img.img)
+		mlx_destroy_image(g->mlx, g->g_img.img);
+	if (g->north->img.img)
+		mlx_destroy_display(g->mlx);
 }
 
 void	free_text(t_data *g)
@@ -47,18 +53,12 @@ void	free_text(t_data *g)
 
 int	exit_game(t_data *g)
 {
-	//destroy_game(g);
 	mlx_destroy_window(g->mlx, g->mlx_win);
-	//destroy_parsing_struct(g->parsing, true);
 	destroy_imgs(g);
-	//mlx_destroy_display(g->mlx);
-	//free(g->north);
-	//destroy_data(g);
 	free(g->mlx);
 	clear_map(g->map);
 	free_text(g);
 	free(g);
-	//(void)g;
 	exit(EXIT_SUCCESS);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: tmalless <tmalless@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 17:19:24 by fduzant           #+#    #+#             */
-/*   Updated: 2023/11/30 10:23:04 by tmalless         ###   ########.fr       */
+/*   Updated: 2023/12/04 19:36:45 by tmalless         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,6 @@
 # include <stdbool.h>
 # include <math.h>
 //A ENLEVER OU COMMENTER
-# include <time.h>
+//# include <time.h>
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: tmalless <tmalless@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/14 14:47:29 by fduzant           #+#    #+#             */
-/*   Updated: 2023/11/30 11:34:56 by tmalless         ###   ########.fr       */
+/*   Updated: 2023/12/04 19:52:20 by tmalless         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ int	create_map(t_data *data, char **file_content, int bigest)
 	int			j;
 
 	i = 0;
-	printf("bigest : %d \n", bigest);
 	while (file_content[i] && file_content[i][0] == '\0')
 		i++;
 	if (i < 6)

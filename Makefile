@@ -6,7 +6,7 @@
 #    By: tmalless <tmalless@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/16 17:21:31 by tmalless          #+#    #+#              #
-#    Updated: 2023/11/28 18:13:27 by tmalless         ###   ########.fr        #
+#    Updated: 2023/12/04 19:32:53 by tmalless         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ INCS_PATH	= ./includes/
 RAYCASTING = raycasting/ray_casting.c raycasting/window_check.c raycasting/ray_caster_h.c \
 			 raycasting/ray_caster_v.c raycasting/pick_ray.c raycasting/window_h.c raycasting/window_v.c
 
-MOVE = movement/handle_mooves.c movement/handle_wall.c movement/handle_look.c
+MOVE = movement/handle_mooves.c movement/handle_wall.c movement/handle_look.c movement/key_bindings.c 
 
 DRAW = draw/player_draw.c draw/map_draw.c draw/player_draw_utils.c
 
@@ -28,13 +28,13 @@ PARSING = parsing/parsing.c parsing/check_file.c parsing/check_file_items.c pars
 		  
 
 UTILS = utils/ft_error.c utils/ft_close.c utils/ft_split_endl.c utils/ft_free.c utils/ft_count_nb_line.c \
-		utils/ft_line_lowercase.c utils/ft_atoi_base.c utils/destroy_data.c
+		utils/ft_line_lowercase.c utils/ft_atoi_base.c utils/destroy_data.c utils/exit.c
 
-UNDEFINED = map_init.c player_init.c key_bindings.c exit.c
+INIT = init/player_init.c init/init_game.c init/init_img.c
 
 3D = 3D/3D_render.c 3D/draw_window.c
 
-SRCS = main.c $(RAYCASTING) $(UNDEFINED) $(MOVE) $(DRAW) $(3D) $(PARSING) $(UTILS)
+SRCS = main.c $(RAYCASTING) $(INIT) $(MOVE) $(DRAW) $(3D) $(PARSING) $(UTILS)
 SRCS := $(addprefix $(SRCS_PATH), $(SRCS))
 
 OBJECT = $(SRCS:.c=.o)

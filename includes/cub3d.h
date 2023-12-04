@@ -6,7 +6,7 @@
 /*   By: tmalless <tmalless@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 13:10:34 by tmalless          #+#    #+#             */
-/*   Updated: 2023/11/30 10:22:59 by tmalless         ###   ########.fr       */
+/*   Updated: 2023/12/04 19:21:46 by tmalless         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@
 # include "raycast.h"
 # include "parsing.h"
 # include "utils.h"
+# include "init.h"
 
 //ERROR MESSAGE
 # define ERROR_ARG "Error, Invalids arguments\n"

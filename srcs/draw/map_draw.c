@@ -6,7 +6,7 @@
 /*   By: tmalless <tmalless@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 10:05:31 by tmalless          #+#    #+#             */
-/*   Updated: 2023/11/30 17:50:51 by tmalless         ###   ########.fr       */
+/*   Updated: 2023/12/04 20:02:11 by tmalless         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -138,7 +138,7 @@ void	print_small_map(t_data *g)
 	{
 		while (g->map[i][j])
 		{
-			if (!ft_strchr("1KV", g->map[i][j]))
+			if (!ft_strchr("1KV ", g->map[i][j]))
 				fill_floor(g, i, j);
 			else if (g->map[i][j] == '1')
 				fill_wall(g, i, j);
@@ -165,7 +165,7 @@ void	print_thin_map(t_data *g, int m)
 	{
 		while (g->map[i][j])
 		{
-			if (!ft_strchr("1KV", g->map[i][j]))
+			if (!ft_strchr("1KV ", g->map[i][j]))
 				fill_floor(g, m, j);
 			else if (g->map[i][j] == '1')
 				fill_wall(g, m, j);
@@ -193,7 +193,7 @@ void	print_low_map(t_data *g, int n)
 	{
 		while (g->map[i][j] && j < l)
 		{
-			if (!ft_strchr("1KV", g->map[i][j]))
+			if (!ft_strchr("1KV ", g->map[i][j]))
 				fill_floor(g, i, n);
 			if (g->map[i][j] == '1')
 				fill_wall(g, i, n);
@@ -228,7 +228,7 @@ void	print_big_map(t_data *g, int i, int j, int m, int n)
 	{
 		while (g->map[i][j] && j < l)
 		{
-			if (!ft_strchr("1KV", g->map[i][j]))
+			if (!ft_strchr("1KV ", g->map[i][j]))
 				fill_floor(g, m, n);
 			else if (g->map[i][j] == '1')
 				fill_wall(g, m, n);
@@ -249,7 +249,7 @@ void	draw_map(t_data *g)
 {
 	if (g->map_height < 9 && g->map_width < 9)
 		print_small_map(g);
-	else if (g->map_height < 8 && g->map_width < 8)
+	else if (g->map_height < 9 || g->map_width < 9)
 		print_semi_small_map(g);
 	else
 		print_big_map(g, get_i(g), get_j(g), 0, 0);

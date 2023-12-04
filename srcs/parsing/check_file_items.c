@@ -6,7 +6,7 @@
 /*   By: tmalless <tmalless@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 14:16:19 by fduzant           #+#    #+#             */
-/*   Updated: 2023/11/30 11:38:23 by tmalless         ###   ########.fr       */
+/*   Updated: 2023/12/04 19:52:01 by tmalless         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -138,7 +138,6 @@ int	check_file_items(t_data *data, t_parsing *parsing)
 			ok++;
 	if (ok != 6)
 		return (ft_error("Error, missing items in the file\n"));
-	printf("'blabla\n'");
 	i = 0;
 	while (i < 4)
 		if (ft_strcmp(parsing->texture_path[i++], "") == 0)

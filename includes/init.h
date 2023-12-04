@@ -1,18 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_img.c                                         :+:      :+:    :+:   */
+/*   init.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tmalless <tmalless@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/25 12:53:46 by tmalless          #+#    #+#             */
-/*   Updated: 2023/11/28 18:03:12 by tmalless         ###   ########.fr       */
+/*   Created: 2023/12/04 19:16:56 by tmalless          #+#    #+#             */
+/*   Updated: 2023/12/04 19:33:52 by tmalless         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cub3d.h"
+#ifndef INIT_H
 
-void	init_img(t_data *g)
-{
-	g->m_img.img = mlx_new_image(g->mlx, 1080, 720);
-}
+# define INIT_H
+
+# include "cub3d.h"
+
+void	init_textures(t_data *g);
+void	init_img(t_data *g);
+void	init_game(t_data *g);
+void	init_hook(t_data *g);
+
+#endif

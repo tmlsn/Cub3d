@@ -6,7 +6,7 @@
 /*   By: tmalless <tmalless@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/14 14:19:01 by tmalless          #+#    #+#             */
-/*   Updated: 2023/11/28 18:33:00 by tmalless         ###   ########.fr       */
+/*   Updated: 2023/12/04 20:09:44 by tmalless         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,6 @@ int	pick_colour_from_texture(t_visual text, int height, int wy, t_data *g)
 		x = (wy + ((g->r.height - height) / 2)) * 64 / g->r.height;
 	col = text.addr + (x * text.ll + y * (text.bpp / 8));
 	return (*(unsigned int *)col);
-
 }
 
 // USE TEXTURES FOR WALLS
@@ -127,4 +126,3 @@ void	draw_game(t_data *g, float ra, float dist, int r)
 	while (j++ < 720)
 		pixel_put(g, j, r, g->floor_color);
 }
-

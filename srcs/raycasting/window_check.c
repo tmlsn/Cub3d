@@ -6,13 +6,11 @@
 /*   By: tmalless <tmalless@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 16:39:01 by tmalless          #+#    #+#             */
-/*   Updated: 2023/11/30 17:29:38 by tmalless         ###   ########.fr       */
+/*   Updated: 2023/12/04 19:55:40 by tmalless         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
-
-
 
 void	break_window(t_data *g)
 {
@@ -24,7 +22,6 @@ void	break_window(t_data *g)
 		[(int)(g->p.x + g->p.dx * 15) / 32] == 'K')
 		g->map[(int)(g->p.y + g->p.dy * 15) / 32]
 		[(int)(g->p.x + g->p.dx * 15) / 32] = 'V';
-	//print_map(g->map);
 }
 
 void	win_v_or_h(t_data *g)

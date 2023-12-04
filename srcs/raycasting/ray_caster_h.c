@@ -6,7 +6,7 @@
 /*   By: tmalless <tmalless@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 15:33:19 by tmalless          #+#    #+#             */
-/*   Updated: 2023/11/28 18:05:21 by tmalless         ###   ########.fr       */
+/*   Updated: 2023/12/03 17:07:31 by tmalless         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,12 +32,12 @@ void	rch_from_side(t_data *g)
 {
 	g->r.hx = g->p.x;
 	g->r.hy = g->p.y;
-	g->r.dof = g->map_width;
+	g->r.dof = g->r.dof_max;
 }
 
 void	find_rch(t_data *g)
 {
-	while (g->r.dof < g->map_width)
+	while (g->r.dof < g->r.dof_max)
 	{
 		g->r.mx = (int)(g->r.hx) >> 5;
 		g->r.my = (int)(g->r.hy) >> 5;
@@ -45,7 +45,7 @@ void	find_rch(t_data *g)
 			&& g->r.mx < g->map_width && g->r.my < g->map_height
 			&& g->map[g->r.my][g->r.mx] && g->map[g->r.my][g->r.mx] == '1')
 		{
-			g->r.dof = g->map_width;
+			g->r.dof = g->r.dof_max;
 		}
 		else
 		{

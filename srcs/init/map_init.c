@@ -6,7 +6,7 @@
 /*   By: tmalless <tmalless@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 16:15:18 by tmalless          #+#    #+#             */
-/*   Updated: 2023/11/28 18:03:54 by tmalless         ###   ########.fr       */
+/*   Updated: 2023/12/04 19:23:35 by tmalless         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ char	**dup_map(char *av)
 		map[i] = get_next_line(fd);
 		if (!map[i])
 		{
-			//clear_map(map);
+			clear_map(map);
 			return (0);
 		}
 		i++;
