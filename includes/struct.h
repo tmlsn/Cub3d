@@ -6,7 +6,7 @@
 /*   By: tmalless <tmalless@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 17:17:30 by fduzant           #+#    #+#             */
-/*   Updated: 2023/11/30 10:28:20 by tmalless         ###   ########.fr       */
+/*   Updated: 2023/12/05 11:52:59 by tmalless         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,15 +133,7 @@ typedef struct s_win
 	float	winh;
 	float	wind;
 	int		isw;
-}				t_win;
-
-
-
-/* typedef struct s_texture
-{
-	t_img	text;
-	char	*path;
-}	 		t_texture;*/	
+}				t_win;	
 
 typedef struct s_data
 {
@@ -165,8 +157,8 @@ typedef struct s_data
 	t_parsing	*parsing;
 	t_ray		r;
 	t_win		w;
-	double			frame;
-	double			ref_frame;
+	double		frame;
+	double		ref_frame;
 	time_t		time;
 }				t_data;
 

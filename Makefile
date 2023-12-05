@@ -6,7 +6,7 @@
 #    By: tmalless <tmalless@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/16 17:21:31 by tmalless          #+#    #+#              #
-#    Updated: 2023/12/04 19:32:53 by tmalless         ###   ########.fr        #
+#    Updated: 2023/12/05 11:39:35 by tmalless         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ RAYCASTING = raycasting/ray_casting.c raycasting/window_check.c raycasting/ray_c
 
 MOVE = movement/handle_mooves.c movement/handle_wall.c movement/handle_look.c movement/key_bindings.c 
 
-DRAW = draw/player_draw.c draw/map_draw.c draw/player_draw_utils.c
+DRAW = draw/player_draw.c draw/map_draw.c draw/player_draw_utils.c draw/map_draw_utils.c draw/semi_small_map_utils.c
 
 PARSING = parsing/parsing.c parsing/check_file.c parsing/check_file_items.c parsing/check_map_closed.c \
 		  parsing/check_map_closed2.c parsing/check_texture_path.c parsing/create_and_init_map.c \

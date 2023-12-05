@@ -6,7 +6,7 @@
 /*   By: tmalless <tmalless@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 17:17:23 by fduzant           #+#    #+#             */
-/*   Updated: 2023/11/28 18:09:41 by tmalless         ###   ########.fr       */
+/*   Updated: 2023/12/05 11:39:10 by tmalless         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,5 +32,12 @@ void	pixel_put(t_data *g, int x, int y, int color);
 // MINI MAP
 int		get_x(t_data *g);
 int		get_y(t_data *g);
+int		get_i(t_data *g);
+int		get_j(t_data *g);
+void	fill_wall(t_data *g, int i, int j);
+void	fill_floor(t_data *g, int i, int j);
+void	fill_w(t_data *g, int i, int j, char c);
+void	print_thin_map(t_data *g, int m);
+void	print_low_map(t_data *g, int n);
 
 #endif
