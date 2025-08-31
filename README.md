@@ -1,6 +1,6 @@
 # Cub3D
 
-Cub3D is a 3D game engine inspired by the classic Wolfenstein 3D. It is developed as part of the 42 curriculum to demonstrate mastery of raycasting, file parsing, and low-level graphics programming. The project adheres to the constraints of the 42 coding standards and uses the MinilibX library for rendering.
+Cub3D is a 3D game engine inspired by the classic Wolfenstein 3D. It is developed as part of the 42 common core to demonstrate mastery of raycasting, file parsing, and low-level graphics programming. The project adheres to the constraints of the 42 coding standards and uses the MinilibX library for rendering.
 
 ---
 
@@ -28,30 +28,11 @@ Makefile              # Build system
 
 ### Key Directories
 
-- **
-
-includes
-
-**: Contains header files such as `cub3d.h` and 
-
+includes: Contains header files such as `cub3d.h` and 
 parsing.h
-
-.
-- **
-
-srcs
-
-**: Contains the main source code, including parsing, raycasting, and initialization logic.
-- **
-
-maps
-
-**: Contains `.cub` map files used to define the game environment.
-- **
-
-mlx_linux
-
-**: MinilibX library for rendering graphics.
+srcs: Contains the main source code, including parsing, raycasting, and initialization logic.
+maps: Contains `.cub` map files used to define the game environment.
+mlx_linux: MinilibX library for rendering graphics.
 
 ---
 
@@ -72,7 +53,7 @@ mlx_linux
    cd cub3d
    ```
 
-2. Extract the MinilibX library:
+2. (Optional) Extract the MinilibX library:
    ```sh
    tar -xzf minilibx-linux.tgz
    ```
